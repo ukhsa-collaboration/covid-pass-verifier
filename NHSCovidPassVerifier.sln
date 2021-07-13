@@ -1,0 +1,53 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHSCovidPassVerifier.Android", "NHSCovidPassVerifier.Android\NHSCovidPassVerifier.Android.csproj", "{3703B8A3-43FA-4B9F-831D-331686527F34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NHSCovidPassVerifier.iOS", "NHSCovidPassVerifier.iOS\NHSCovidPassVerifier.iOS.csproj", "{405FDB97-9A61-426F-B1B9-86D876065C57}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHSCovidPassVerifier", "NHSCovidPassVerifier\NHSCovidPassVerifier.csproj", "{CCA7587C-2315-43AE-990C-BF5682BC8E20}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NHSCovidPassVerifier.Tests", "NHSCovidPassVerifier.Tests\NHSCovidPassVerifier.Tests.csproj", "{44E26DBA-49F0-485B-8772-65D1EB66CB28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|iPhone = Debug|iPhone
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3703B8A3-43FA-4B9F-831D-331686527F34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3703B8A3-43FA-4B9F-831D-331686527F34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3703B8A3-43FA-4B9F-831D-331686527F34}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3703B8A3-43FA-4B9F-831D-331686527F34}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{3703B8A3-43FA-4B9F-831D-331686527F34}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{3703B8A3-43FA-4B9F-831D-331686527F34}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{3703B8A3-43FA-4B9F-831D-331686527F34}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{405FDB97-9A61-426F-B1B9-86D876065C57}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
+		{405FDB97-9A61-426F-B1B9-86D876065C57}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
+		{405FDB97-9A61-426F-B1B9-86D876065C57}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{405FDB97-9A61-426F-B1B9-86D876065C57}.Debug|iPhone.Build.0 = Debug|iPhone
+		{405FDB97-9A61-426F-B1B9-86D876065C57}.Debug|iPhone.Deploy.0 = Debug|iPhone
+		{405FDB97-9A61-426F-B1B9-86D876065C57}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{405FDB97-9A61-426F-B1B9-86D876065C57}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{CCA7587C-2315-43AE-990C-BF5682BC8E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCA7587C-2315-43AE-990C-BF5682BC8E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCA7587C-2315-43AE-990C-BF5682BC8E20}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{CCA7587C-2315-43AE-990C-BF5682BC8E20}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{CCA7587C-2315-43AE-990C-BF5682BC8E20}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{CCA7587C-2315-43AE-990C-BF5682BC8E20}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{44E26DBA-49F0-485B-8772-65D1EB66CB28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44E26DBA-49F0-485B-8772-65D1EB66CB28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44E26DBA-49F0-485B-8772-65D1EB66CB28}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{44E26DBA-49F0-485B-8772-65D1EB66CB28}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{44E26DBA-49F0-485B-8772-65D1EB66CB28}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{44E26DBA-49F0-485B-8772-65D1EB66CB28}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D62FCF85-E40A-4749-A75D-ECD6EB1AEC4C}
+	EndGlobalSection
+EndGlobal

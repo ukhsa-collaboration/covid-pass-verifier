@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NHSCovidPassVerifier.Views.Elements.ScannerResultElements.InvalidCode"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Application.EnableAccessibilityScalingForNamedFontSizes="true">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="Auto"/>
+    </Grid.RowDefinitions>
+
+    <Frame 
+                Grid.Row="0"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                WidthRequest="150"
+                HeightRequest="150"
+                CornerRadius="75"
+                HasShadow="False"
+                Padding="0"
+                BackgroundColor="{StaticResource NhsDarkGray}">
+        <Frame WidthRequest="150"
+                       HeightRequest="150"
+                       HasShadow="False"
+                       BackgroundColor="#D8DDE0"
+                       Margin="6,6,6,6">
+            <Frame.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Single">
+                    <On Platform="iOS" Value="70" />
+                    <On Platform="Android" Value="75" />
+                </OnPlatform>
+            </Frame.CornerRadius>
+
+            <Image Source="{StaticResource ExclamationMark}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+        </Frame>
+    </Frame>
+    <Label      x:Name="InvalidStatus"
+                Grid.Row="1"
+                FontFamily="Arial"
+                FontSize="Medium"
+                TextColor="{StaticResource NhsTextBlack}"
+                Margin="0, 20, 0, 0"
+                VerticalOptions="Start"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center">
+    </Label>
+</Grid>

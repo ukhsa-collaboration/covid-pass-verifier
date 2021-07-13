@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NHSCovidPassVerifier.Views.AboutPage"             
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:elements="clr-namespace:NHSCovidPassVerifier.Views.Elements;assembly=NHSCovidPassVerifier" 
+             xmlns:local="clr-namespace:NHSCovidPassVerifier.Utils" 
+             xmlns:BaseViewModels="clr-namespace:NHSCovidPassVerifier.ViewModels.Base"
+             ios:Application.EnableAccessibilityScalingForNamedFontSizes="true"
+             ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource NhsBackgroundColour}">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <elements:NhsHeader Grid.Row="0"
+                                HeaderBackgroundColour="{StaticResource NhsBlue}"
+                                LeftButtonImageSource="{StaticResource ArrowBack}"
+                                LeftButtonCommand="{Binding BackCommand}"/>
+            <Grid Grid.Row="1" 
+                  BackgroundColor="{StaticResource NhsDarkGray}"/>
+            <ScrollView Grid.Row="2" Padding="0,0,0,20">
+                <StackLayout Grid.Row="1" Margin="20,20,20,0" Spacing="10">
+                    <Label Text="{Binding ConsentTitle}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       IsVisible="{Binding ShowButtons}"/>
+                    <Label Text="{Binding AboutPageTitle}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       Margin="0,10"
+                       IsVisible="{Binding ShowButtons, Converter={StaticResource InverseBoolConverter}}"/>
+                    <Label Text="{Binding AppName}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                       FontAttributes="Bold"/>
+                    <Label Text="{Binding AppPromo}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                       Margin="0,0,0,5"/>
+                    <elements:AboutPageExpander Text="{Binding AppDescriptionTitle}" TextTitle="{Binding AppDescription}"/>
+                    <elements:AboutPageExpander Text="{Binding HowToUseScannerTitle}" TextTitle="{Binding AboutPageParagraph1}"/>
+                    <elements:AboutPageExpander Text="{Binding AboutInternationalTitle}" TextTitle="{Binding AboutInternationalParagraph}"/>
+                    <elements:AboutPageExpander Text="{Binding AboutDomesticTitle}" TextTitle="{Binding AboutDomesticParagraph}"/>
+                    <elements:AboutPageExpander Text="{Binding AboutPageSubtitle2}" TextTitle="{Binding AboutDataText}"/>
+                    <elements:AboutPageExpander Text="{Binding AppPermissionsTitle}" TextTitle="{Binding AppPermissionsText}"/>
+                    <elements:AboutPageExpander Text="{Binding ErasedTitle}" TextTitle="{Binding ErasedText}"/>
+                    <elements:AboutPageExpander Text="{Binding RejectTitle}" TextTitle="{Binding RejectText}"/>
+                    <Label Text="{Binding AboutPageSubtitle3}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                       FontAttributes="Bold"
+                       Margin="0,15,0,5"/>
+                    <elements:MenuItem Text="{Binding PrivacyLink}" Command="{Binding Source={RelativeSource AncestorType={x:Type BaseViewModels:BaseViewModel}}, Path=PrivacyPolicyCommand}"/>
+                    <elements:MenuItem Text="{Binding TANDCLink}" Command="{Binding Source={RelativeSource AncestorType={x:Type BaseViewModels:BaseViewModel}}, Path=TermsAndConditionsCommand}"/>
+                    <elements:MenuItem Text="{Binding AccessibilityLink}" Command="{Binding Source={RelativeSource AncestorType={x:Type BaseViewModels:BaseViewModel}}, Path=AccessibilityCommand}"/>
+                    <Label Text="{Binding AboutPageSubtitle4}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                       FontAttributes="Bold"
+                       Margin="0,15,0,5"/>
+                    <elements:MenuItem Text="{Binding FAQLink}" Command="{Binding Source={RelativeSource AncestorType={x:Type BaseViewModels:BaseViewModel}}, Path=FAQCommand}"/>
+                    <Label Text="{Binding AboutPageSubtitle5}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                       FontAttributes="Bold"
+                       Margin="0,15,0,5"
+                       IsVisible="{Binding ShowButtons, Converter={StaticResource InverseBoolConverter}}"/>
+                    <StackLayout Spacing="0" IsVisible="{Binding ShowButtons, Converter={StaticResource InverseBoolConverter}}">
+                        <Label Text="{Binding AboutAppVersion}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"/>
+                        <Label Text="{Binding AboutAppVersionValue}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Small"
+                       FontAttributes="Italic"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <Frame
+                Grid.Row="3"
+                HasShadow="True"
+                VerticalOptions="End"
+                IsVisible="{Binding ShowButtons}"
+                BackgroundColor="{StaticResource NhsBackgroundColour}">
+                <StackLayout 
+                Margin="2">
+                    <Frame
+                       CornerRadius="5"
+                       HasShadow="False"
+                       Padding="0"
+                       VerticalOptions="End"
+                       BackgroundColor="{StaticResource NhsDarkGray}"
+                       AutomationProperties.IsInAccessibleTree="True"
+                       AutomationId="LandingPage_CheckaQRCode"
+                       AutomationProperties.HelpText="{Binding OpenScannerText}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding AgreeCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Label
+                              
+                               Text="{Binding AcceptButtonText}"
+                               TextColor="{StaticResource NhsWhite}"
+                               FontFamily="Arial"
+                               FontSize="Body"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Padding="0, 20, 0, 20"
+                               Margin="20, 0"
+                               AutomationProperties.IsInAccessibleTree="False">
+                            </Label>
+                        </Grid>
+                    </Frame>
+                    <Frame CornerRadius="5"   
+                       HasShadow="False"
+                       Padding="20, 0, 20, 0"
+                       VerticalOptions="End"
+                       BackgroundColor="{StaticResource BackGroundColour}"
+                       AutomationProperties.IsInAccessibleTree="True"
+                       AutomationId="LandingPage_CheckaQRCode">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackCommand}"/>
+                        </Frame.GestureRecognizers>
+                        <Grid>
+                            <Label
+                               Grid.Row="0"
+                               Text="{Binding DeclineButtonText}"
+                               TextColor="{StaticResource NhsBlue}"
+                               FontFamily="Arial"
+                               FontSize="Body"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Padding="0, 15, 0, 10"
+                               Margin="0"
+                               AutomationProperties.IsInAccessibleTree="False">
+                            </Label>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

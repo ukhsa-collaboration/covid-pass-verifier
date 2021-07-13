@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="launcher_background">#005EB8</color>
+    <color name="colorPrimary">#61C897</color>
+    <color name="colorNhsBlue">#005EB8</color>
+    <color name="colorAccent">#330072</color>
+	  <color name="ListViewSelected">#DBDBDB</color>
+	  <color name="ListViewHighlighted">#DBDBDB</color>
+</resources>

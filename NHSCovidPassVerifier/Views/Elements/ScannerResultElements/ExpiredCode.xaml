@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NHSCovidPassVerifier.Views.Elements.ScannerResultElements.ExpiredCode"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Application.EnableAccessibilityScalingForNamedFontSizes="true">
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*"/>
+        <ColumnDefinition Width="3*"/>
+        <ColumnDefinition Width="1*"/>
+    </Grid.ColumnDefinitions>
+    <Frame HeightRequest="88"
+               WidthRequest="285"
+               CornerRadius="10"
+               BackgroundColor="{StaticResource NhsDarkGray}"
+               Padding="3"
+               Margin="0, 20, 0, 20"
+               Grid.ColumnSpan="3" 
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               HasShadow="False"
+               IsClippedToBounds="True"/>
+
+    <Frame HeightRequest="88"
+               WidthRequest="285"
+               CornerRadius="8"
+               Padding="0"
+               Margin="0, 20, 0, 20"
+               Grid.ColumnSpan="3" 
+               BackgroundColor="#D8DDE0"
+               BorderColor="{StaticResource NhsDarkGray}"
+               OutlineColor="{StaticResource NhsDarkGray}"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               HasShadow="False"           
+               IsClippedToBounds="True"
+               AutomationProperties.IsInAccessibleTree="True"/>
+
+
+
+    <StackLayout Grid.Column="1"
+                     HorizontalOptions="Center"
+                     VerticalOptions="Center"
+                     Margin="0, 20, 0, 20">
+
+        <Grid ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="{StaticResource ClockIcon}"
+                       Grid.Column="0"
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start"
+                       />
+
+            <Label     x:Name="Expired"
+                       FontFamily="Arial"
+                       TextColor="{StaticResource NhsDarkGray}"
+                       FontSize="Title"
+                       Grid.Column="1"
+                       HorizontalOptions="Center"
+                       AutomationProperties.IsInAccessibleTree="True"
+                       VerticalOptions="Center">
+            </Label>
+        </Grid>
+    </StackLayout>
+</Grid>

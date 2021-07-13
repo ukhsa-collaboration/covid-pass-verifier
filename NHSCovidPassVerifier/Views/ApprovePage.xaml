@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NHSCovidPassVerifier.Views.ApprovePage"             
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:elements="clr-namespace:NHSCovidPassVerifier.Views.Elements;assembly=NHSCovidPassVerifier" 
+             xmlns:local="clr-namespace:NHSCovidPassVerifier.Utils" 
+             xmlns:BaseViewModels="clr-namespace:NHSCovidPassVerifier.ViewModels.Base"
+             ios:Application.EnableAccessibilityScalingForNamedFontSizes="true"
+             ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource NhsBackgroundColour}">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <elements:NhsHeader Grid.Row="0"
+                                HeaderBackgroundColour="{StaticResource NhsBlue}"
+                                LeftButtonImageSource="{StaticResource ArrowBack}"
+                                LeftButtonCommand="{Binding BackCommand}"/>
+            <Grid Grid.Row="1" 
+                  BackgroundColor="{StaticResource NhsDarkGray}"
+                  />
+
+            <ScrollView Grid.Row="2" Padding="0,0,0,20" >
+                <StackLayout Grid.Row="2" Margin="30,20,30,10" Spacing="20" VerticalOptions="Center">
+
+                    <Label Text="{Binding ApprovePageTitle}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="28"
+                       FontAttributes="Bold"            
+                       HorizontalOptions="Center"
+                       HorizontalTextAlignment="Center"
+                       VerticalOptions="End"
+                       />
+                    <Label HorizontalOptions="Center"
+                           HorizontalTextAlignment="Center"
+                           VerticalOptions="End"
+                           Padding="20, 0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding ApproveToCText}"
+                                      TextColor="{StaticResource NhsTextColour}"
+                                      FontSize="Body"/>
+                                <Span Text=" " />
+                                <local:HyperlinkSpan Text="{Binding ToCLinkText}" FontSize="Body">
+                                    <local:HyperlinkSpan.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding TermsAndConditionsCommand}" />
+                                    </local:HyperlinkSpan.GestureRecognizers>
+                                </local:HyperlinkSpan>
+                                <Span Text=" " />
+                                <Span Text="{Binding ApproveToCText_2}"
+                                      TextColor="{StaticResource NhsTextColour}"
+                                      FontSize="Body"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+            </ScrollView>
+
+            <Frame  Grid.Row="3"
+                VerticalOptions="End"
+                BackgroundColor="{StaticResource NhsButtonShadowColour}"
+                Padding="0, 0, 0, 3"
+                Margin="20,20,20,35"
+                HasShadow="False"
+                CornerRadius="5"
+                IsClippedToBounds="True">
+
+                <Button x:Name="NextButton"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationId="NameEntryPage_Next"
+                    Text="{Binding AcceptButtonText}"
+                    FontSize="Body"
+                    FontFamily="Arial"
+                    HeightRequest="50"
+                    CornerRadius="5"
+                    VerticalOptions="End"
+                    TextColor="{StaticResource NhsWhite}"
+                    Command="{Binding AgreeCommand}"
+                    BorderWidth="1"
+                    BorderColor="{StaticResource BorderColour}"
+                    BackgroundColor="{StaticResource NhsButtonColour}"/>
+            </Frame>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

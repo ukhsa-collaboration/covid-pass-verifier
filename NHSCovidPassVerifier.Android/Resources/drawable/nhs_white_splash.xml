@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+	<item>
+		<color android:color="@color/colorNhsBlue"/>
+	</item>
+	<item 
+	android:width="240dp"
+	android:height="143dp"
+	android:gravity="center"
+	android:bottom="100dp"
+	>
+		<bitmap
+			android:src="@drawable/nhs_logo_white"
+			android:tileMode="disabled"
+			android:gravity="center"/>
+	</item>
+</layer-list>

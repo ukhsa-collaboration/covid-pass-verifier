@@ -1,0 +1,118 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <LangVersion>8</LangVersion>
+    <Configurations>;Debug</Configurations>
+    <AssemblyName>NHSCovidPassVerifier</AssemblyName>
+    <RootNamespace>NHSCovidPassVerifier</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '|AnyCPU' ">
+    <DebugType>full</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == '|AnyCPU' " />
+
+  <ItemGroup>
+    <EmbeddedResource Include="Locales\en.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="3.0.1" />
+    <PackageReference Include="DLToolkit.Forms.Controls.ImageCropView" Version="1.0.7" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="4.2.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="4.0.0" />
+    <PackageReference Include="PeterO.Cbor" Version="4.4.1" />
+    <PackageReference Include="Portable.BouncyCastle" Version="1.8.8" />
+    <PackageReference Include="QRCoder" Version="1.3.9" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="2.80.2" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
+    <PackageReference Include="System.ObjectModel" Version="4.3.0" />
+    <PackageReference Include="TinyIoC" Version="1.3.0" />
+    <PackageReference Include="TinyMvvm.TinyIoC" Version="2.4.14" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.1.0" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="I18NPortable" Version="1.0.1" />
+    <PackageReference Include="I18NPortable.JsonReader" Version="1.0.1" />
+    <PackageReference Include="Xam.Plugin.Media" Version="5.0.1" />
+    <PackageReference Include="IntelliAbb.Xamarin.Controls" Version="1.0.148" />
+    <PackageReference Include="Zlib.Portable.Signed" Version="1.11.0" />
+    <PackageReference Include="ZXing.Net.Mobile" Version="3.0.0-beta5" />
+    <PackageReference Include="ZXing.Net.Mobile.Forms" Version="3.0.0-beta5" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\Utils\" />
+    <Folder Include="Locales\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Views\ApprovePage.xaml.cs">
+      <DependentUpon>ApprovePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\LandingPage.xaml.cs">
+      <DependentUpon>LandingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\NhsSplashPage.xaml.cs">
+      <DependentUpon>NhsSplashPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RegistrationFlow\AddPhotoPage.xaml.cs">
+      <DependentUpon>AddPhotoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\FrontPage.xaml.cs">
+      <DependentUpon>FrontPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Views\AboutPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AccessibilityPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Elements\CustomSwitch.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Elements\DropDownMenu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Elements\ScannerResultElements\ExpiredCode.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Elements\ScannerResultElements\InvalidCode.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Elements\ScannerResultElements\ValidCode.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ErrorPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\FAQPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\NhsSplashPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Elements\CameraPreview.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AnimationTestPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PrivacyPolicyPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ScannerResultInternationalCodePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TermsAndConditionsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties locales_4en_1json__JsonSchema="http://json.schemastore.org/winget-pkgs" /></VisualStudio></ProjectExtensions>
+</Project>

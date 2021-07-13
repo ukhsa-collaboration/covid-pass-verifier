@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" 
+             x:Class="NHSCovidPassVerifier.Views.LandingPage"
+             BackgroundColor="{StaticResource NhsBlue}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             NavigationPage.HasNavigationBar="False"
+             AutomationId="LandingPage"
+             AutomationProperties.IsInAccessibleTree="False">
+    <ContentPage.Content>
+        <Grid Padding="0, 0, 0, 30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+
+            <Image 
+                Grid.Row="0"
+                Source="{Binding LandingsPageImageSource}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Scale="0.95">
+            </Image>
+
+            <Grid 
+                Grid.Row="1"
+                Margin="30, 0, 30, 0">
+
+                <Frame CornerRadius="5"
+                       HasShadow="False"
+                       Padding="20, 0, 20, 0"
+                       BackgroundColor="{StaticResource NhsWhite}"
+                       AutomationProperties.IsInAccessibleTree="True"
+                       AutomationId="LandingPage_CheckaQRCode"
+                       AutomationProperties.HelpText="{Binding OpenScannerText}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NextPageCommand}"/>
+                    </Frame.GestureRecognizers>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="1"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <Image Grid.Column="0"
+
+                               Source="{StaticResource QRImage}"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               BackgroundColor="Transparent"
+                               Margin="5, 0, 15, 0"
+                               AutomationProperties.IsInAccessibleTree="False"/>
+
+                        <Grid Grid.Column="1"
+                              Grid.Row="0"
+                              BackgroundColor="{StaticResource NhsBlue}"/>
+
+                        <Label Grid.Column="2"
+                               Grid.Row="0"
+                               Text="{Binding OpenScannerText}"
+                               TextColor="{StaticResource NhsBlue}"
+                               FontFamily="Arial"
+                               FontSize="Body"
+                               FontAttributes="Bold"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Start"
+                               Padding="0, 20, 0, 20"
+                               Margin="10, 0"
+                               AutomationProperties.IsInAccessibleTree="False">
+                        </Label>
+
+                        <Image Grid.Column="3"
+                               Grid.Row="0"
+                               Source="{StaticResource ChevronLeft}"
+                               BackgroundColor="Transparent"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               AutomationProperties.IsInAccessibleTree="False"/>
+                    </Grid>
+                </Frame>
+
+            </Grid>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="NHSCovidPassVerifier.Views.Elements.NhsHeader"
+      x:Name="HeaderGrid">
+    
+    <Grid Margin="10, 10">
+        
+        <ImageButton x:Name="LeftButton"
+                     BackgroundColor="Transparent"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Center"
+                     WidthRequest="35"
+                     AutomationId="LeftButton">
+        </ImageButton>
+
+        <Image x:Name="CenterImage"
+               VerticalOptions="Center"
+               HorizontalOptions="Center">
+        </Image>
+
+        <ImageButton x:Name="RightButton"
+                     BackgroundColor="Transparent"
+                     HorizontalOptions="End"
+                     VerticalOptions="Center"
+                     WidthRequest="25"
+                     AutomationId="RightButton">
+        </ImageButton>
+    </Grid>
+    
+</Grid>

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:NHSCovidPassVerifier.Controls.Converters;assembly=NHSCovidPassVerifier"
+             x:Class="NHSCovidPassVerifier.App">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--NHS Styling Main Colours -->
+            <!-- Text -->
+            <Color x:Key="NhsTextColour">#212b32</Color>
+
+            <!-- Links -->
+            <Color x:Key="NhsLinkColour">#005eb8</Color>
+
+            <!-- Error State -->
+            <Color x:Key="NhsErrorColour">#d5281b</Color>
+
+            <!-- Button -->
+            <Color x:Key="NhsButtonColour">#007f3b</Color>
+            <Color x:Key="NhsButtonShadowColour">#00401E</Color>
+
+            <!-- Background Colour -->
+            <Color x:Key="NhsBackgroundColour">#f0f4f5</Color>
+            <Color x:Key="NhsDarkBackground">#262626</Color>
+
+            <!-- NHS White is used to make important information
+                 stand out and for alternating backgrounds -->
+            <Color x:Key="NhsWhite">#ffffff</Color>
+ 
+            <!-- Images -->
+            <x:String x:Key="QRImage">qr_code_scanner.png</x:String>
+            <x:String x:Key="ChevronLeft">chevron_left.png</x:String>
+            <x:String x:Key="ArrowBack">arrow_back.png</x:String>
+            <x:String x:Key="ExclamationMark">exclamation_mark.png</x:String>
+            <x:String x:Key="ValidIcon">valid_icon.png</x:String>
+            <x:String x:Key="ClockIcon">clock_icon.png</x:String>
+            <x:String x:Key="TickMark">tick_mark.png</x:String>
+            <x:String x:Key="ExpanderMore">baseline_expand_more.png</x:String>
+            <x:String x:Key="ExpanderLess">baseline_expand_less.png</x:String>
+            <x:String x:Key="ExpanderDownTriangle">icon_down_triangle.png</x:String>
+            <x:String x:Key="ExpanderRightTriangle">icon_right_triangle.png</x:String>
+            <x:String x:Key="HelpIcon">help_icon.png</x:String>
+            <x:String x:Key="InfoIcon">info.png</x:String>
+
+            <!-- HyperLinks -->
+            <x:String x:Key="CertificateServiceToU">https://covid-status.service.nhsx.nhs.uk/help/TermsAndConditions/</x:String>
+            <x:String x:Key="PrivacyPolicyLink">https://www.nhsx.nhs.uk/covidpassverifier</x:String>
+            <x:String x:Key="PublicKeysLink">https://covid-status.service.nhsx.nhs.uk/pubkeys/keys.json</x:String>
+            <x:String x:Key="AppleLink">https://apps.apple.com/us/app/nhs-covid-pass-verifier/id1546716320</x:String>
+            <x:String x:Key="AndroidLink">https://play.google.com/store/apps/details?id=uk.gov.dhsc.healthrecord</x:String>
+
+            <!-- HyperLink Text -->
+            <x:String x:Key="CertificateServiceToUText">Terms and Conditons</x:String>
+            <x:String x:Key="AppleLinkText">Apple App store</x:String>
+            <x:String x:Key="AndroidLinkText">Google Play store</x:String>
+            <x:String x:Key="PublicKeysLinkText">public keys</x:String>
+            
+            <!-- Others -->
+            <Color x:Key="NhsBlue">#005EB8</Color>
+            <Color x:Key="NhsButtonGreen">#007F3B</Color>
+            <Color x:Key="NhsTextBlack">#030303</Color>
+            <Color x:Key="NhsDarkGray">#425563</Color>
+
+            <Color x:Key="TextColourRed">#D5281B</Color>
+            <Color x:Key="BorderColour">#707070</Color>
+            <Color x:Key="BackGroundColour">#F0F4F5</Color>
+
+            <x:Double x:Key="DisabledButtonOpacity">0.5</x:Double>
+            <x:Double x:Key="ExpiredCertificateOverlayOpacity">0.35</x:Double>
+
+            <!-- Values -->
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White">
+                </Setter>
+                <Setter Property="TextTransform" Value="None"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource NhsButtonGreen}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource NhsButtonGreen}" />
+                                    <Setter Property="Opacity" Value="{StaticResource DisabledButtonOpacity}"/>
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+            
+            <!-- Converters -->
+            <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter"/>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NHSCovidPassVerifier.Views.ScannerResultPage"
+             xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="True"
+             xmlns:elements="clr-namespace:NHSCovidPassVerifier.Views.Elements"
+             xmlns:scannerResultElements="clr-namespace:NHSCovidPassVerifier.Views.Elements.ScannerResultElements"
+             ios:Application.EnableAccessibilityScalingForNamedFontSizes="true"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource NhsBackgroundColour}">
+       
+       <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <elements:NhsHeader Grid.Row="0"
+                            HeaderBackgroundColour="{StaticResource NhsBlue}"/>
+
+        <ProgressBar Grid.Row="1"
+                     VerticalOptions="Start"             
+                     HorizontalOptions="Fill"
+                     ProgressColor="{StaticResource BorderColour}"
+                     Progress="{Binding TimerProgress}">
+            <ProgressBar.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0" />
+                    <On Platform="Android" Value="0, -6, 0, 0" />
+                </OnPlatform>
+            </ProgressBar.Margin>
+        </ProgressBar>
+
+
+
+
+        <!--Valid Element -->
+        <Grid Grid.Row="3" IsVisible="{Binding ValidPassport}">
+            <scannerResultElements:ValidCode ValidStatusText ="{Binding ValidStatusText}"/>
+        </Grid>
+
+        <!-- Invalid Element-->
+        <Grid Grid.Row="3" IsVisible="{Binding InvalidPassport}" VerticalOptions="Center">
+            <scannerResultElements:InvalidCode InvalidStatusText ="{Binding InvalidCode}"/>
+        </Grid>
+
+        <!--Expired Element -->
+        <Grid Grid.Row="3" IsVisible="{Binding ExpiredPassport}">
+            <scannerResultElements:ExpiredCode ExpiredText="{Binding ExpiredText}"/>
+        </Grid>
+
+        <!-- Expires time text-->
+        <ScrollView Grid.Row="4">
+            <scannerResultElements:ExpiresDateTimeText HorizontalOptions="Center"
+                                                       ExpiresDateText="{Binding ExpiresDate}"
+                                                       ExpiresTimeText="{Binding ExpiresTime}"/>
+        </ScrollView>
+        <!-- Generic Name -->
+        <Label Grid.Row="2"
+               Text="{Binding Name}"
+               Margin="0,10,0,0"
+               FontFamily="Arial"
+               FontAttributes="Bold"
+               FontSize="Title"
+               TextColor="{StaticResource NhsTextBlack}"
+               AutomationProperties.IsInAccessibleTree="True"
+               AutomationProperties.HelpText="{Binding Name}"
+               HorizontalOptions="Center"
+               HorizontalTextAlignment="Center"
+               VerticalOptions="Center">
+        </Label>
+        <!-- Generic Hold to pause -->
+        <BoxView Grid.Row="5"
+                 Margin="40, 0, 40, 0"
+                 BackgroundColor="#707070"
+                 HeightRequest="1"
+                 VerticalOptions="Center"/>
+
+        <Label Grid.Row="6"
+               VerticalOptions="Start"
+               HorizontalTextAlignment="Center"
+               Text="{Binding PauseText}"
+               FontFamily="Arial"
+               TextColor="{StaticResource NhsTextBlack}"
+               FontSize="Body"
+               Opacity="0.5"
+               AutomationProperties.HelpText="{Binding PauseText}"
+               AutomationProperties.IsInAccessibleTree="True"/>
+
+        <Button Grid.Row="0"
+                Grid.RowSpan="7"
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand"
+                Pressed="Button_Pressed"
+                Released="Button_Released"
+                BackgroundColor="Transparent" />
+
+    </Grid>
+
+</ContentPage>

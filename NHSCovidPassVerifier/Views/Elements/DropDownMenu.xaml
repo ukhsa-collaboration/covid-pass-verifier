@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Frame xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NHSCovidPassVerifier.Views.Elements.DropDownMenu"
+             xmlns:elements="clr-namespace:NHSCovidPassVerifier.Views.Elements"
+             xmlns:BaseViewModels="clr-namespace:NHSCovidPassVerifier.ViewModels.Base"
+             xmlns:local="clr-namespace:NHSCovidPassVerifier.ViewModels"
+             x:Name="HelpMenu"
+             HasShadow="True"
+             BackgroundColor="{StaticResource NhsWhite}"
+             Padding="0,5"
+             IsVisible="{Binding IsHelpMenuExpanded}">
+    <Grid Margin="0, 5, 0, 5" RowSpacing="10" Padding="0, 0, 0, 20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <elements:MenuItem Grid.Row="0" 
+                           Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Text="{Binding AboutPageText}"
+            Command="{Binding AboutCommand}"/>
+
+        <Label Grid.Row="1"
+               Grid.Column="0"
+               Margin="15, 0"
+               FontSize="Body"
+               VerticalOptions="Center">
+            
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="{Binding ToggleVerifyText}"
+                          TextColor="{StaticResource NhsBlue}"
+                          FontSize="Body"/>
+                    <Span Text=" " />
+                    <Span Text="{Binding ToggleInternationalText}"
+                           TextColor="{StaticResource NhsBlue}"
+                           FontAttributes="Bold"
+                           FontSize="Body"/>
+                    <Span Text="&#10;" />
+                    <Span Text="{Binding Toggle2DBarcodeText}"
+                          TextColor="{StaticResource NhsBlue}"
+                          FontSize="Body"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        
+
+        <elements:CustomSwitch 
+            Grid.Row="1" 
+            Grid.Column="1"
+            Margin="0, 0, 20, 0"
+            VerticalOptions="End"
+            State="{Binding InternationalToggleEnabled}">
+        </elements:CustomSwitch>
+    </Grid>
+</Frame>

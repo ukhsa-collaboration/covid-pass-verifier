@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NHSCovidPassVerifier.Views.FAQPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:elements="clr-namespace:NHSCovidPassVerifier.Views.Elements;assembly=NHSCovidPassVerifier"
+             ios:Application.EnableAccessibilityScalingForNamedFontSizes="true"
+             ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource NhsBackgroundColour}">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <elements:NhsHeader Grid.Row="0"
+                                HeaderBackgroundColour="{StaticResource NhsBlue}"
+                                LeftButtonImageSource="{StaticResource ArrowBack}"
+                                LeftButtonCommand="{Binding BackCommand}"/>
+            <Grid Grid.Row="1" 
+                  BackgroundColor="{StaticResource NhsDarkGray}"/>
+            <ScrollView Grid.Row="2" Padding="0,0,0,20">
+            <Grid  Margin="20,20,20,0">
+                <StackLayout Spacing="20">
+                    <Label Text="{Binding commonQuestionsTitle}"
+                           FontSize="Title"
+                           FontAttributes="Bold"
+                           TextColor="{StaticResource NhsTextBlack}"
+                           Margin="0,0,0,10"/>
+                        <elements:AboutPageExpander Text="{Binding MinimumRequirementsQuestion}" TextTitle="{Binding MinimumRequirementsAnswer}"/>
+                        <elements:AboutPageExpander Text="{Binding InvalidQRCodeQuestion}" TextTitle="{Binding InvalidQRCodeAnswer}"/>
+                        <elements:AboutPageExpander Text="{Binding InternetQuestion}" TextTitle="{Binding InternetAnswer}"/>
+                        <elements:AboutPageExpander Text="{Binding InternationalQuestion}" TextTitle="{Binding InternationalAnswer}"/>
+                    </StackLayout>
+            </Grid>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

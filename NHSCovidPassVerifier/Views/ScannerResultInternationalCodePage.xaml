@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NHSCovidPassVerifier.Views.ScannerResultInternationalCodePage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:elements="clr-namespace:NHSCovidPassVerifier.Views.Elements;assembly=NHSCovidPassVerifier"
+             xmlns:helpers="clr-namespace:NHSCovidPassVerifier.Views.Elements.Helpers;assembly=NHSCovidPassVerifier"
+             ios:Application.EnableAccessibilityScalingForNamedFontSizes="true"
+             ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource NhsBackgroundColour}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="VaccinationCardDataTemplate">
+                <elements:ScannerVaccinationResult/>
+            </DataTemplate>
+            <DataTemplate x:Key="RecoveryCardDataTemplate">
+                <elements:ScannerRecoveryResult/>
+            </DataTemplate>
+            <DataTemplate x:Key="TestResultCardDataTemplate">
+                <elements:ScannerTestResult/>
+            </DataTemplate>
+            <helpers:InternationalResultCardDataTemplateSelector x:Key="ResultCardDataTemplateSelector"
+                                                                 VaccinationCardTemplate="{StaticResource VaccinationCardDataTemplate}"
+                                                                 RecoveryCardTemplate="{StaticResource RecoveryCardDataTemplate}"
+                                                                 TestResultCardTemplate="{StaticResource TestResultCardDataTemplate}"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <elements:NhsHeader Grid.Row="0"
+                                HeaderBackgroundColour="{StaticResource NhsBlue}"/>
+            <Grid Grid.Row="1" 
+                  BackgroundColor="{StaticResource NhsDarkGray}"/>
+            <Grid Grid.Row="2">
+            <CollectionView 
+                            VerticalScrollBarVisibility="Never"    
+                            SelectionMode="None"
+                            ItemsSource="{Binding QrCodeResults}"
+                            BackgroundColor="{Binding NhsBackgroundColour}"
+                            ItemTemplate="{StaticResource ResultCardDataTemplateSelector}">
+                <CollectionView.Header>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="20, 20, 0, 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0"
+                               Text="{Binding Name}"
+                               FontFamily="Arial"
+                               FontAttributes="Bold"
+                               FontSize="Title"
+                               TextColor="{StaticResource NhsTextBlack}"
+                               HorizontalOptions="Start"/>
+                            <Label Grid.Row="1"
+                               Text="{Binding DateOfBirthText}"
+                               TextColor="{StaticResource NhsTextBlack}"
+                               FontSize="Small"
+                               VerticalOptions="Start"
+                               HorizontalOptions="Start"
+                               FontFamily="Arial"
+                               AutomationProperties.IsInAccessibleTree="True" />
+                            <Label Grid.Row="2"
+                                   Text="{Binding CertificateExpirationText}"
+                                   TextColor="{StaticResource NhsTextBlack}"
+                                   FontSize="Small"
+                                   VerticalOptions="Start"
+                                   HorizontalOptions="Start"
+                                   FontFamily="Arial"
+                                   AutomationProperties.IsInAccessibleTree="True" />
+
+                        </Grid>
+
+                        <Grid Grid.Row="1" Margin="20, 0, 0, 0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0"
+                               Text="{Binding TitleText}"
+                               TextColor="{StaticResource NhsTextBlack}"
+                               FontAttributes="Bold"
+                               FontSize="Small"
+                               VerticalOptions="Start"
+                               HorizontalOptions="Start"
+                               FontFamily="Arial"
+                               AutomationProperties.IsInAccessibleTree="True" />
+                        </Grid>
+                    </Grid>
+                </CollectionView.Header>
+            </CollectionView>
+                <elements:DropDownMenu x:Name="dropMenu" VerticalOptions="Start" IsVisible="{Binding IsHelpMenuExpanded}"/>
+            </Grid>
+
+            <Frame Grid.Row="3"
+                   HeightRequest="80"
+                   VerticalOptions="Center"
+                   HasShadow="False"
+                   BackgroundColor="{StaticResource NhsBackgroundColour}"
+                   Padding="0">
+                <Button BackgroundColor="{StaticResource NhsDarkGray}"
+                        VerticalOptions="Center"
+                        Text="Dismiss"
+                        Command="{Binding BackCommand}"
+                        Margin="20, 0, 20, 0">
+                    
+                </Button>
+
+            </Frame>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

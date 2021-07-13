@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="NHSCovidPassVerifier.Views.Elements.ScannerResultElements.ExpiresDateTimeText"
+      xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+      xmlns:converters="clr-namespace:NHSCovidPassVerifier.Controls.Converters;assembly=NHSCovidPassVerifier"
+      xmlns:views="http://xamarin.com/schemas/2020/toolkit"
+      ios:Application.EnableAccessibilityScalingForNamedFontSizes="true"
+      VerticalOptions="Start"
+      HorizontalOptions="Center">
+    <Grid.Resources>
+        <ResourceDictionary>
+            <converters:DateTimeToResultFormatConverter x:Key="DateTimeToResultFormatConverter"/>
+        </ResourceDictionary>
+    </Grid.Resources>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="*"/>
+    </Grid.RowDefinitions>
+
+    <Label x:Name="ExpiresDate"
+           Grid.Row="0"
+           TextColor="{StaticResource NhsTextBlack}"
+           FontSize="Large"                
+           VerticalOptions="Start"
+           HorizontalOptions="Center"
+           HorizontalTextAlignment="Center"
+           FontFamily="Arial"
+           AutomationProperties.IsInAccessibleTree="True"/>
+
+    <Label x:Name="ExpiresTime"
+           Grid.Row="1"
+           FontSize="Large"
+           TextColor="{StaticResource NhsTextBlack}"
+           VerticalOptions="Start"
+           HorizontalOptions="Center"
+           FontFamily="Arial"
+           AutomationProperties.IsInAccessibleTree="True"/>
+    
+</Grid>

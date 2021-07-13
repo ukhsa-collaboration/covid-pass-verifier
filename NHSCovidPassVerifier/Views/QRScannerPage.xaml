@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:NHSCovidPassVerifier.ViewModels"
+             xmlns:zxing="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:elements="clr-namespace:NHSCovidPassVerifier.Views.Elements"
+             ios:Page.UseSafeArea="True"
+             BackgroundColor="{StaticResource NhsDarkBackground}"
+             ios:Application.EnableAccessibilityScalingForNamedFontSizes="true"
+             x:Class="NHSCovidPassVerifier.Views.QRScannerPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <Grid BackgroundColor="{StaticResource NhsDarkBackground}"
+          Padding="0"
+          RowSpacing="0"
+          x:Name="MainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" x:Name="HeaderGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1"/>
+            </Grid.RowDefinitions>
+
+            <elements:NhsHeader Grid.Row="0"
+                                x:Name="NhsHeader"
+                                HeaderBackgroundColour="{StaticResource NhsBlue}"
+                                LeftButtonImageSource="{StaticResource ArrowBack}"
+                                LeftButtonCommand="{Binding BackCommand}"
+                                RightButtonImageSource="{StaticResource HelpIcon}"
+                                RightButtonCommand="{Binding HelpCommand}"
+                                Margin="0,0,0,-6">
+            </elements:NhsHeader>
+
+            <BoxView Grid.Row="1"
+                     BackgroundColor="{StaticResource BorderColour}"
+                     HeightRequest="1"
+                     VerticalOptions="End"/>
+        </Grid>
+
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0"
+                  RowSpacing="0"
+                  ColumnSpacing="0" >
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1.5*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="4*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="5*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.RowSpan="3"
+                      Grid.ColumnSpan="3" 
+                      x:Name="ScanContainer" 
+                      RowSpacing="0"
+                      HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand">
+                    <zxing:ZXingScannerView
+                x:Name="_scanView"
+                IsScanning="True"
+                Options="{Binding ScanningOptions}"
+                BackgroundColor="Transparent"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                AutomationProperties.IsInAccessibleTree="True"
+                AutomationProperties.HelpText="QR scanner"/>
+                </Grid>
+                
+
+                <BoxView Grid.Row="1"
+                 Grid.Column="1"
+                 BackgroundColor="{StaticResource NhsLinkColour}"
+                 HeightRequest="5"
+                 VerticalOptions="Start"
+                 HorizontalOptions="Start"/>
+
+                <BoxView Grid.Row="1"
+                 Grid.Column="1"
+                 BackgroundColor="{StaticResource NhsLinkColour}"
+                 HeightRequest="5"
+                 VerticalOptions="End"
+                 HorizontalOptions="Start"/>
+
+                <BoxView Grid.Row="1"
+                 Grid.Column="1"
+                 BackgroundColor="{StaticResource NhsLinkColour}"
+                 HeightRequest="5"
+                 VerticalOptions="Start"
+                 HorizontalOptions="End"/>
+
+                <BoxView Grid.Row="1"
+                 Grid.Column="1"
+                 BackgroundColor="{StaticResource NhsLinkColour}"
+                 HeightRequest="5"
+                 VerticalOptions="End"
+                 HorizontalOptions="End"/>
+
+                <BoxView Grid.Row="1"
+                 Grid.Column="1"
+                 BackgroundColor="{StaticResource NhsLinkColour}"
+                 WidthRequest="5"
+                 HorizontalOptions="Start"
+                 VerticalOptions="Start"/>
+
+                <BoxView Grid.Row="1"
+                 Grid.Column="1"
+                 BackgroundColor="{StaticResource NhsLinkColour}"
+                 WidthRequest="5"
+                 HorizontalOptions="End"
+                 VerticalOptions="End"/>
+
+                <BoxView Grid.Row="1"
+                 Grid.Column="1"
+                 BackgroundColor="{StaticResource NhsLinkColour}"
+                 WidthRequest="5"
+                 HorizontalOptions="Start"
+                 VerticalOptions="End"/>
+
+                <BoxView Grid.Row="1"
+                 Grid.Column="1"
+                 BackgroundColor="{StaticResource NhsLinkColour}"
+                 WidthRequest="5"
+                 HorizontalOptions="End"
+                 VerticalOptions="Start"/>
+
+
+            </Grid>
+            <elements:DropDownMenu x:Name="dropMenu" Grid.Row="0" VerticalOptions="Start" 
+                                   IsVisible="{Binding IsHelpMenuExpanded}"/>
+        </Grid>
+
+
+    </Grid>
+
+</ContentPage>

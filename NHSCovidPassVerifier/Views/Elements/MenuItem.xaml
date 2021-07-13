@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="NHSCovidPassVerifier.Views.Elements.MenuItem">
+
+    <Grid.GestureRecognizers>
+        <TapGestureRecognizer x:Name="CommandGestureRecognizer"/>
+    </Grid.GestureRecognizers>
+
+    <Frame Padding="5"
+           BackgroundColor="{StaticResource NhsWhite}"
+           IsClippedToBounds="True"
+           HasShadow="False">
+
+        <Grid VerticalOptions="Center"
+              ColumnSpacing="0"
+              RowSpacing="5"
+              Margin="10,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"
+                   x:Name="TextLabel"
+                   FontSize="Body"
+                   VerticalOptions="Center"
+                   TextColor="{StaticResource NhsBlue}"/>
+
+            <Image Grid.Column="1"
+                   Source="{StaticResource ChevronLeft}"
+                   Scale="1"
+                   Aspect="AspectFit"
+                   VerticalOptions="Center"
+                   HeightRequest="25"/>
+        </Grid>
+    </Frame>
+</Grid>

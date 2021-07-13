@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NHSCovidPassVerifier.Views.Elements.ScannerTestResult"
+	  xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+	  xmlns:converters="clr-namespace:NHSCovidPassVerifier.Controls.Converters;assembly=NHSCovidPassVerifier"
+	  xmlns:views="http://xamarin.com/schemas/2020/toolkit"
+      xmlns:viewModels="clr-namespace:NHSCovidPassVerifier.ViewModels"
+      xmlns:elements="clr-namespace:NHSCovidPassVerifier.Views.Elements;assembly=NHSCovidPassVerifier"
+      ios:Application.EnableAccessibilityScalingForNamedFontSizes="true">
+
+    <Frame BackgroundColor="{StaticResource NhsWhite}"
+				Padding="0"
+				Margin="20, 10"
+				IsClippedToBounds="True"
+				CornerRadius="10"
+				HasShadow="False">
+
+        <Grid VerticalOptions="FillAndExpand" RowSpacing="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="1" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <views:Expander Grid.Row="0"
+                            ExpandAnimationLength="100"
+                            CollapseAnimationLength="100">
+                <views:Expander.Header>
+                    <Grid VerticalOptions="Center"
+                          ColumnSpacing="0"
+                          RowSpacing="8"
+                          Padding="20, 10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Image  Grid.Row="0" Grid.Column="2"
+								Source="baseline_expand_more.png"
+								HorizontalOptions="Center"
+								VerticalOptions="Start"
+								Margin="0,0,-15,0"
+								HeightRequest="30">
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image"
+                                             Binding="{Binding Source={RelativeSource AncestorType={x:Type views:Expander}}, 
+                                             Path=IsExpanded}"
+                                             Value="True">
+                                    <Setter Property="Source"
+                                            Value="baseline_expand_less.png"/>
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+
+                        <Label Grid.Row="0" Grid.Column="0"
+                               Text="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=TestText}"
+							   TextColor="{StaticResource NhsTextColour}"
+							   FontAttributes="Bold"
+							   FontSize="Body"
+							   VerticalOptions="Center"
+							   HorizontalOptions="Start"
+							   AutomationProperties.IsInAccessibleTree="True"/>
+
+                        <ImageButton
+                                 Grid.Row="0" Grid.Column="1"
+                                 HeightRequest="32"
+                                 BackgroundColor="Transparent"
+                                 Source= "{StaticResource InfoIcon}"
+                                 Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=PushTestResultInfoPageCommand}"
+                                 HorizontalOptions="Start"
+                                 VerticalOptions="Center"
+                                 Padding="5,0,10,0"/>
+                        <Grid Grid.Row="1" BackgroundColor="{StaticResource NhsDarkGray}"/>
+                    </Grid>
+                </views:Expander.Header>
+                <views:Expander.Content>
+                    <Grid RowSpacing="0" Padding="20, 10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <elements:ScannerResultEntry Grid.Row="0" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=DiseaseTargetedText}" 
+                                                     ContentText="{Binding DiseaseTargeted}"
+                                                     IsVisible="{Binding DiseaseTargeted, Converter={StaticResource NullToVisibilityConverter}}"/>
+                        
+                        <elements:ScannerResultEntry Grid.Row="1" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=TestTypeText}" 
+                                                     ContentText="{Binding TestType}"
+                                                     IsVisible="{Binding TestType, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+                        <elements:ScannerResultEntry Grid.Row="2" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=TestNameText}" 
+                                                     ContentText="{Binding TestName}"
+                                                     IsVisible="{Binding TestName, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+                        <elements:ScannerResultEntry Grid.Row="3" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=ManufacturerText}" 
+                                                     ContentText="{Binding TestManufacturer}"
+                                                     IsVisible="{Binding TestManufacturer, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+                        <elements:ScannerResultEntry Grid.Row="4" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=SampleCollectedDateText}" 
+                                                     ContentText="{Binding SampleCollectedTimeText}"
+                                                     IsVisible="{Binding SampleCollectedTimeText, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+                        <elements:ScannerResultEntry Grid.Row="5" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=TestResultTest}" 
+                                                     ContentText="{Binding TestResult}"
+                                                     IsVisible="{Binding TestResult, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+                        <elements:ScannerResultEntry Grid.Row="6" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=TestCentre}" 
+                                                     ContentText="{Binding TestCentre}"
+                                                     IsVisible="{Binding TestCentre, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+                        <elements:ScannerResultEntry Grid.Row="7" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=CountryOfTestText}" 
+                                                     ContentText="{Binding CountryOfTest}"
+                                                     IsVisible="{Binding CountryOfTest, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+                        <elements:ScannerResultEntry Grid.Row="8" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=CertificateIssuerText}" 
+                                                     ContentText="{Binding CertificateIssuer}"
+                                                     IsVisible="{Binding CertificateIssuer, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+                        <elements:ScannerResultEntry Grid.Row="9" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=CertificateIdText}" 
+                                                     ContentText="{Binding CertificateId}"
+                                                     IsVisible="{Binding CertificateId, Converter={StaticResource NullToVisibilityConverter}}"
+                                                     WithEndLine="False"/>
+
+                    </Grid>
+                </views:Expander.Content>
+
+            </views:Expander>
+            <BoxView Grid.Row="2" 
+					 VerticalOptions="Start" 
+					 HeightRequest="1"
+					 Opacity="0.1"
+					 BackgroundColor="Black"/>
+        </Grid>
+
+    </Frame>
+
+</Grid>

@@ -1,0 +1,261 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="NHSCovidPassVerifier.Views.TermsAndConditionsPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:elements="clr-namespace:NHSCovidPassVerifier.Views.Elements;assembly=NHSCovidPassVerifier" 
+             xmlns:local="clr-namespace:NHSCovidPassVerifier.Utils"
+             ios:Application.EnableAccessibilityScalingForNamedFontSizes="true"
+             ios:Page.UseSafeArea="True"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource NhsBackgroundColour}">
+    <ContentPage.Content>
+        <Grid RowSpacing="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+            <elements:NhsHeader Grid.Row="0"
+                                HeaderBackgroundColour="{StaticResource NhsBlue}"
+                                LeftButtonImageSource="{StaticResource ArrowBack}"
+                                LeftButtonCommand="{Binding BackCommand}"/>
+            <Grid Grid.Row="1" 
+                  BackgroundColor="{StaticResource NhsDarkGray}"/>
+            <ScrollView Grid.Row="2" Padding="0,0,0,20">
+                <StackLayout  Margin="20,20,20,0">
+                    <Label 
+                       Text="{Binding TermsTitle}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Title"
+                       FontAttributes="Bold"
+                       Margin="0,15"/>
+                    <Label 
+                       Text="{Binding TermsAgreeText}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                       />
+                    <Label 
+                       Text="{Binding TermsText1}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                       Margin="15,0,0,0"
+                       FontAttributes="Bold"/>
+                    <Label 
+                       Text="{Binding TermsText1_1}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                       Margin="15,0,0,0"/>
+                    <Label FontSize="Body" Margin="15,0,0,15">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding TermsText1_2}"
+                                      TextColor="{StaticResource NhsTextColour}"/>
+                                <Span Text=" "
+                                      TextColor="{StaticResource NhsTextColour}"/>
+                                <local:HyperlinkSpan Text="{StaticResource CertificateServiceToUText}"
+                                                         Url="{StaticResource CertificateServiceToU}"/>
+                                <Span Text="."
+                                      TextColor="{StaticResource NhsTextColour}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label 
+                       Text="{Binding TermsText2}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        FontAttributes="Bold"/>
+                    <Label 
+                       Text="{Binding TermsText2_1}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                       Margin="15,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText2_2}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                       Margin="15,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText2_3}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       Margin="15,0,0,0"
+                       FontSize="Body"/>
+                    <Label 
+                       Text="{Binding TermsText2_4}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                       Margin="15,0,0,15"/>
+                    <Label 
+                       Text="{Binding TermsText3}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        FontAttributes="Bold"/>
+                    <Label FontSize="Body" Margin="15,0,0,0">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding TermsText3_1}"
+                                      TextColor="{StaticResource NhsTextColour}"/>
+                                <Span Text=" "
+                                      TextColor="{StaticResource NhsTextColour}"/>
+                                <local:HyperlinkSpan Text="{StaticResource AppleLinkText}"
+                                                         Url="{StaticResource AppleLink}"/>
+                                <Span Text=" or "
+                                      TextColor="{StaticResource NhsTextColour}"/>
+                                <local:HyperlinkSpan Text="{StaticResource AndroidLinkText}"
+                                                         Url="{StaticResource AndroidLink}"/>
+                                <Span Text=". "
+                                      TextColor="{StaticResource NhsTextColour}"/>
+                                <Span Text="{Binding TermsText3_1_P2}"
+                                      TextColor="{StaticResource NhsTextColour}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label 
+                       Text="{Binding TermsText3_2}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,15"/>
+                    <Label 
+                       Text="{Binding TermsText3_3}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,15"/>
+                    <Label 
+                       Text="{Binding TermsText3_4}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,15"/>
+                    <Label 
+                       Text="{Binding TermsText3_5}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,15"/>
+                    <Label 
+                       Text="{Binding TermsText3_6}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,15"/>
+                    <Label 
+                       Text="{Binding TermsText4}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        FontAttributes="Bold"/>
+                    <Label 
+                       Text="{Binding TermsText4_1}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText4_2}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,15"/>
+                    <Label 
+                       Text="{Binding TermsText5}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        FontAttributes="Bold"/>
+                    <Label 
+                       Text="{Binding TermsText5_1}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText5_2}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText5_2_1}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="25,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText5_2_2}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="25,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText5_2_3}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="25,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText5_2_4}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="25,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText5_2_5}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="25,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText5_3}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,15"/>
+                    <Label 
+                       Text="{Binding TermsText6}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        FontAttributes="Bold"/>
+                    <Label 
+                       Text="{Binding TermsText6_1}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,15"/>
+                    <Label 
+                       Text="{Binding TermsText7}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        FontAttributes="Bold"/>
+                    <Label FontSize="Body" Margin="15,0,0,15">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding TermsText7_1}"
+                                      TextColor="{StaticResource NhsTextColour}"/>
+                                <Span Text=" "
+                                      TextColor="{StaticResource NhsTextColour}"/>
+                                <Span Text="{Binding TermsText7_1_Email}"
+                                      TextColor="{StaticResource NhsTextColour}"/>
+                                <Span Text="."
+                                      TextColor="{StaticResource NhsTextColour}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Label 
+                       Text="{Binding TermsText8}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        FontAttributes="Bold"/>
+                    <Label 
+                       Text="{Binding TermsText8_1}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText8_2}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText8_3}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,0"/>
+                    <Label 
+                       Text="{Binding TermsText8_4}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"
+                        Margin="15,0,0,15"/>
+                    <Label 
+                       Text="{Binding TermsTextLastUpdated}"
+                       TextColor="{StaticResource NhsTextColour}"
+                       FontSize="Body"/>
+                </StackLayout>
+            </ScrollView>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>

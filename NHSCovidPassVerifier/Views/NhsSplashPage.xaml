@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" 
+             x:Class="NHSCovidPassVerifier.Views.NhsSplashPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="{StaticResource NhsBlue}"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true">
+    <ContentPage.Content>
+        <StackLayout
+            VerticalOptions="Center">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                
+                    <forms:AnimationView x:Name="animationView"
+                        Grid.Row="0"
+                        Animation="spinner.json"
+                        Loop="True"
+                        AutoPlay="True"
+                        WidthRequest="60"
+                        HeightRequest="60"
+                        VerticalOptions="Center"/>
+
+                    <Label Text="{Binding LoadingText}"
+                        Margin="0,0,0,0"   
+                        Grid.Row="1"       
+                        TextColor="{StaticResource NhsWhite}"
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        VerticalOptions="Start" 
+                        HorizontalOptions="CenterAndExpand" />
+
+            </Grid>
+
+
+
+           
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

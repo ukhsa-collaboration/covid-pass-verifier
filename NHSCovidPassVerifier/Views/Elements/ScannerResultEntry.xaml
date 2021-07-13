@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="NHSCovidPassVerifier.Views.Elements.ScannerResultEntry"
+      Margin="0, 0, 0, 5">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"/>
+        <RowDefinition Height="1" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+      </Grid.ColumnDefinitions>
+      <Label Grid.Row="0"
+             Grid.Column="0"
+             x:Name="Header"
+             FontSize="Body"
+             FontAttributes="Bold"
+             VerticalOptions="Start"
+             TextColor="{StaticResource NhsTextColour}" />
+      <Label Grid.Row="0"
+             Grid.Column="1"
+             x:Name="Content"
+             TextColor="{StaticResource NhsTextColour}"
+             FontSize="Body"
+             VerticalOptions="Center"
+             Margin='0,0,0,10'
+             AutomationProperties.IsInAccessibleTree="True"/>
+      <BoxView Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+               x:Name="EndLine"
+               IsVisible="{Binding WithEndLine}"
+               VerticalOptions="End"
+               HeightRequest="1"
+               Opacity="0.1"
+               BackgroundColor="Black"/>
+</Grid>

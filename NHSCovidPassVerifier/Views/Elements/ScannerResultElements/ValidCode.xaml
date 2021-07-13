@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+        x:Class="NHSCovidPassVerifier.Views.Elements.ScannerResultElements.ValidCode"
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+        ios:Application.EnableAccessibilityScalingForNamedFontSizes="true">
+    <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Frame 
+                Grid.Row="0"
+                VerticalOptions="End"
+                HorizontalOptions="Center"
+                WidthRequest="150"
+                HeightRequest="150"
+                CornerRadius="75"
+                HasShadow="False"
+                Padding="0"
+                BackgroundColor="{StaticResource NhsWhite}">
+
+            <Frame WidthRequest="150"
+                       HeightRequest="150"
+                       HasShadow="False"
+                       BackgroundColor="{StaticResource NhsButtonGreen}"
+                       Margin="6,6,6,6">
+                <Frame.CornerRadius>
+                    <OnPlatform x:TypeArguments="x:Single">
+                        <On Platform="iOS" Value="70" />
+                        <On Platform="Android" Value="75" />
+                    </OnPlatform>
+                </Frame.CornerRadius>
+
+                <Image Source="{StaticResource TickMark}"
+                           WidthRequest="140"
+                           HeightRequest="140"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"/>
+            </Frame>
+        </Frame>
+    <Label x:Name="ValidStatus"
+                   Grid.Row="1"
+                   Margin="0,0,0,0"
+                   FontFamily="Arial"
+                   FontSize="Title"
+                   TextColor="{StaticResource NhsTextBlack}"
+                   AutomationProperties.IsInAccessibleTree="True"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center"/>
+</Grid>

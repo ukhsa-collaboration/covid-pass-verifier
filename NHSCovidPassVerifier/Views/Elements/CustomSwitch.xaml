@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="NHSCovidPassVerifier.Views.Elements.CustomSwitch"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Grid HorizontalOptions="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--  Background Frame  -->
+        <Frame
+            x:Name="switchTrack"
+            Grid.Row="0"
+            Margin="0, 0, 5, 0"
+            Padding="0"
+            BackgroundColor="#768692"
+            HasShadow="False"
+            HeightRequest="22"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            WidthRequest="45">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+            </Frame.GestureRecognizers>
+            <Frame.CornerRadius>
+                <OnPlatform x:TypeArguments="x:Single"
+                            iOS="10"
+                            Android="16" />
+            </Frame.CornerRadius>
+
+        </Frame>
+
+        <!--  Running Frame  -->
+
+        <Button
+            x:Name="switchThumb"
+            AutomationProperties.IsInAccessibleTree="True"
+            BackgroundColor="White"
+            BorderColor="#C7D9D9"
+            BorderWidth="1"
+            Clicked="OnSwitchTapped"
+            CornerRadius="10"
+            FontFamily="IBMPlexSansSemiBold"
+            FontSize="Caption"
+            HeightRequest="20"
+            HorizontalOptions="Start"
+            TextColor="#47526F"
+            Text="{Binding Strings[SETTINGS_SWITCH_OFF]}"
+            VerticalOptions="Center"
+            WidthRequest="20">
+            <Button.GestureRecognizers>
+                <PanGestureRecognizer PanUpdated="PanGestureRecognizer_PanUpdated" />
+            </Button.GestureRecognizers>
+        </Button>
+    </Grid>
+</ContentView>
