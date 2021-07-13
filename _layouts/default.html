@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+
+    <title>OPEN ANALYTICS</title>
+
+    <link
+      type="font/woff2"
+      href="{{ "/assets/fonts/FrutigerLTW01-55Roman.woff2" | relative_url }}"
+      rel="preload"
+      as="font"
+      crossorigin
+    />
+    <link
+      type="font/woff2"
+      href="{{ "/assets/fonts/FrutigerLTW01-65Bold.woff2" | relative_url }}"
+      rel="preload"
+      as="font"
+      crossorigin
+    />
+
+    <link href="{{ "/assets/nhsuk.css" | relative_url }}" rel="stylesheet" />
+
+    <script src="{{  "/assets/nhsuk.js" | relative_url }}" defer></script>
+
+    <link
+      rel="shortcut icon"
+      href="{{  "/assets/favicons/favicon.ico" | relative_url }}"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="{{  "/assets/favicons/apple-touch-icon-180x180.png" | relative_url }}"
+    />
+    <link
+      rel="mask-icon"
+      href="{{  "/assets/favicons/favicon.ico" | relative_url }}"
+      color="#005eb8"
+    />
+    <link
+      rel="icon"
+      sizes="192x192"
+      href="{{  "/assets/favicon-192x192.png" | relative_url }}"
+    />
+    <meta
+      name="msapplication-TileImage"
+      content="{{  "/assets/mediumtile-144x144.png" | relative_url }}"
+    />
+    <meta name="msapplication-TileColor" content="#005eb8" />
+    <meta
+      name="msapplication-square70x70logo"
+      content="{{  "/assets/smalltile-70x70.png" | relative_url }}"
+    />
+    <meta
+      name="msapplication-square150x150logo"
+      content="{{  "/assets/mediumtile-150x150.png" | relative_url }}"
+    />
+    <meta
+      name="msapplication-wide310x150logo"
+      content="{{  "/assets/favicons/widetile-310x150.png" | relative_url }}"
+    />
+    <meta
+      name="msapplication-square310x310logo"
+      content="{{  "/assets/favicons/largetile-310x310.png" | relative_url }}"
+    />
+
+    <meta property="og:url" content="https://www.nhsx.nhs.uk/" />
+    <meta property="og:title" content="Open Analytics Template" />
+    <meta
+      property="og:description"
+      content="Template for end-to-end open source analytics"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="{{  "/assets/logos/open-graph.png" | relative_url }}"
+    />
+    <meta property="og:image:alt" content="NHSX" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@nhsx" />
+    <meta name="twitter:creator" content="@nhsx" />
+  </head>
+
+  <body class="">
+    <script>
+      document.body.className = document.body.className
+        ? document.body.className + " js-enabled"
+        : "js-enabled";
+    </script>
+
+    <a class="nhsuk-skip-link" href="#maincontent">Skip to main content</a>
+
+    <header class="nhsuk-header nhsuk-header--logo-only" role="banner">
+      <div class="nhsuk-width-container nhsuk-header__container">
+        <div class="nhsuk-header__logo">
+          <a
+            class="nhsuk-header__link nhsuk-header__link--service"
+            href="/"
+            aria-label="Open Analytics Template"
+          >
+            <svg
+              class="nhsuk-logo nhsuk-logo--white"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              role="presentation"
+              focusable="false"
+              viewBox="0 0 40 16"
+            >
+              <path fill="#fff" d="M0 0h40v16H0z"></path>
+              <path
+                fill="#005eb8"
+                d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"
+              ></path>
+              <image
+                src="https://assets.nhs.uk/images/nhs-logo.png"
+                xlink:href=""
+              ></image>
+            </svg>
+            <span class="nhsuk-header__service-name">OPEN ANALYTICS </span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="nhsuk-width-container">
+      <main class="nhsuk-main-wrapper" id="maincontent">
+        <div class="nhsuk-grid-row">
+          <div class="nhsuk-grid-column-full">{{ content }}</div>
+        </div>
+      </main>
+    </div>
+
+    <footer role="contentinfo">
+      <div class="nhsuk-footer" id="nhsuk-footer">
+        <div class="nhsuk-width-container">
+          <h2 class="nhsuk-u-visually-hidden">Support links</h2>
+          <ul class="nhsuk-footer__list">
+            <li class="nhsuk-footer__list-item">
+              Developed by
+              <a
+                class="nhsuk-footer__list-item-link"
+                href="{{ site.github.owner_url }}"
+                >{{ site.github.owner_name }}</a
+              >
+            </li>
+            <li class="nhsuk-footer__list-item">
+              View the Project on
+              <a
+                class="nhsuk-footer__list-item-link"
+                href="{{ site.github.repository_url }}"
+                >GitHub</a
+              >
+            </li>
+          </ul>
+
+          <p class="nhsuk-footer__copyright">&copy; MIT</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
