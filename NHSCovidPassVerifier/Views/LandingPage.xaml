@@ -13,6 +13,7 @@
         <Grid Padding="0, 0, 0, 30">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
@@ -25,8 +26,33 @@
                 Scale="0.95">
             </Image>
 
+            <Grid Grid.Row="1"
+                Margin="30, 0, 30, 0">
+
+                <Frame
+                    CornerRadius="5"
+                    HasShadow="False"
+                    Padding="20"
+                    BorderColor="{StaticResource NhsGlowBlue}"
+                    BackgroundColor="Transparent"
+                    AutomationProperties.IsInAccessibleTree="True"
+                    AutomationId="LandingPage_CheckaQRCode"
+                    AutomationProperties.HelpText="{Binding ReferenceDataStatusText}">
+                    
+                    <Grid VerticalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Label Grid.Column="0" VerticalOptions="Center" Text="{Binding ReferenceDataStatusText}" />
+                        <Button Grid.Column="1" Text="Update Now" Command="{Binding UpdateReferenceDataCommand}" />
+                    </Grid>
+                </Frame>
+            </Grid>
+
             <Grid 
-                Grid.Row="1"
+                Grid.Row="2"
                 Margin="30, 0, 30, 0">
 
                 <Frame CornerRadius="5"
