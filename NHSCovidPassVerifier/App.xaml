@@ -59,6 +59,7 @@
             
             <!-- Others -->
             <Color x:Key="NhsBlue">#005EB8</Color>
+            <Color x:Key="NhsGlowBlue">#358fe6</Color>
             <Color x:Key="NhsButtonGreen">#007F3B</Color>
             <Color x:Key="NhsTextBlack">#030303</Color>
             <Color x:Key="NhsDarkGray">#425563</Color>
