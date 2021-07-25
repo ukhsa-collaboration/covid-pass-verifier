@@ -7,6 +7,11 @@
   "PERMISSIONS_MISSING_TITLE": "Permissions needed",
   "PERMISSIONS_MISSING_DESCRIPTION_SCANNER": "To use verifier, NHS COVID Pass Verifier needs permission to access your camera. Please go into your device settings and enable this.",
 
+  "DATA_UPDATE_LOADING": "Reference Data: Checking Status...",
+  "DATA_UPDATE_RUNNING": "Reference Data: Updating...",
+  "DATA_UPDATE_REQUIRED": "Reference Data: Update Required",
+  "DATA_UPDATE_NOT_REQUIRED": "Reference Data: Up To Date",
+  "DATA_UPDATE_UPDATE_NOW": "Update Now",
 
   "NHS_SPLASH_TEXT": "Please wait",
   "NHS_COVID_STATUS": "NHS COVID Pass",
@@ -182,7 +187,7 @@
   "INTERNATIONAL_SCANNER_RESULT_FIRST_POSITIVE_RESULT": "Date of test",
   "INTERNATIONAL_SCANNER_RESULT_COUNTRY_OF_TEST": "Country of test",
   "INTERNATIONAL_SCANNER_RESULT_DATE_VALID_UNTIL": "Recovery expiry",
-  
+
   "INTERNATIONAL_SCANNER_RESULT_RESULT_TEST": "Test",
   "INTERNATIONAL_SCANNER_RESULT_RESULT_TEST_TYPE": "Test type",
   "INTERNATIONAL_SCANNER_RESULT_RESULT_TEST_NAME": "Test name",
