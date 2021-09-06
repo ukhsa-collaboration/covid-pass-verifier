@@ -144,7 +144,7 @@ namespace NHSCovidPassVerifier.Tests.RepositoryTests
             var split = validQr.Split(".");
 
             var hasher = new SHA256CryptoServiceProvider();
-            var digest = hasher.ComputeHash(Encoding.Unicode.GetBytes($"{split[0]}.{split[1]}"));
+            var digest = Encoding.Unicode.GetBytes($"{split[0]}.{split[1]}");
             var header = split[0];
             var sigBytes = Base64UrlEncoder.DecodeBytes(split[2]);
 
