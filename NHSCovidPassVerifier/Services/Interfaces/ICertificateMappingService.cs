@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="key">Manufacturer key defined by EU standard</param>
         /// <returns>Manufacturer name or key if no associated name is found</returns>
-        public string GetVaccineManufacturer(string key);
+        public string GetManufacturer(string key);
 
         /// <summary>
         /// Get associated vaccine type name (contained in common configuration) from key parameter

@@ -37,7 +37,7 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
         {
             new[] {"840539006", "COVID-19"},
         };
-        
+
         private static readonly IEnumerable<string[]> VaccineNameValidTestCases = new List<string[]>
         {
             new[] {"EU/1/20/1528", "Comirnaty"},
@@ -69,23 +69,17 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
             new[] {"CoronaVac", "CoronaVac"},
             new[] {"Covaxin", "Covaxin (also known as BBV152 A, B, C)"},
         };
-        
+
         private static readonly IEnumerable<string[]> TestTypeValidTestCases = new List<string[]>
         {
             new[] {"LP6464-4", "Nucleic acid amplification with probe detection"},
             new[] {"LP217198-3", "Rapid immunoassay"},
         };
-        
+
         private static readonly IEnumerable<string[]> TestResultValidTestCases = new List<string[]>
         {
             new[] {"260415000", "Not detected"},
             new[] {"260373001", "Detected"},
-        };
-
-        private static readonly IEnumerable<string[]> TestManufacturerValidTestCases = new List<string[]>
-        {
-            new[] {"1833", "AAZ-LMB, COVID-VIRO"},
-            new[] {"1232", "Abbott Rapid Diagnostics, Panbio COVID-19 Ag Rapid Test"}
         };
 
         private static readonly IEnumerable<string> UnmappedTestCases = new List<string>
@@ -104,7 +98,7 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
         public CertificateMappingServiceTests()
         {
             _commonSettingsServiceMock = CreateMockCommonSettingsService();
-            
+
             _certificateMappingService = new CertificateMappingService(_commonSettingsServiceMock.Object);
         }
 
@@ -125,8 +119,6 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
                 .Returns(CertificateMappingData.GetTestTypes());
             mock.Setup(x => x.TestResults)
                 .Returns(CertificateMappingData.GetTestResults());
-            mock.Setup(x => x.TestManufacturers)
-                .Returns(CertificateMappingData.GetTestManufacturers());
 
             return mock;
         }
@@ -136,18 +128,18 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
         [TestCaseSource(nameof(VaccineManufacturerValidTestCases))]
         public void VaccineManufacturerInMappingReturnsCorrectlyMappedString(string s, string expected)
         {
-            var actual = _certificateMappingService.GetVaccineManufacturer(s);
+            var actual = _certificateMappingService.GetManufacturer(s);
             Assert.AreEqual(expected, actual);
         }
-        
+
         [TestCaseSource(nameof(UnmappedTestCases))]
         public void VaccineManufacturerNotInMappingReturnsSameString(string s)
         {
-            var actual = _certificateMappingService.GetVaccineManufacturer(s);
+            var actual = _certificateMappingService.GetManufacturer(s);
             Assert.AreEqual(s, actual);
         }
         #endregion
-        
+
         #region DiseaseTargetedTests
         [TestCaseSource(nameof(DiseaseTargetedValidTestCases))]
         public void DiseaseTargetedInMappingReturnsCorrectlyMappedString(string s, string expected)
@@ -155,7 +147,7 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
             var actual = _certificateMappingService.GetDiseaseTargeted(s);
             Assert.AreEqual(expected, actual);
         }
-        
+
         [TestCaseSource(nameof(UnmappedTestCases))]
         public void DiseaseTargetedNotInMappingReturnsSameString(string s)
         {
@@ -163,7 +155,7 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
             Assert.AreEqual(s, actual);
         }
         #endregion
-        
+
         #region VaccineNameTests
         [TestCaseSource(nameof(VaccineNameValidTestCases))]
         public void VaccineNameInMappingReturnsCorrectlyMappedString(string s, string expected)
@@ -171,7 +163,7 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
             var actual = _certificateMappingService.GetVaccineName(s);
             Assert.AreEqual(expected, actual);
         }
-        
+
         [TestCaseSource(nameof(UnmappedTestCases))]
         public void VaccineNameNotInMappingReturnsSameString(string s)
         {
@@ -179,7 +171,7 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
             Assert.AreEqual(s, actual);
         }
         #endregion
-        
+
         #region ReadableVaccineNameTests
         [TestCaseSource(nameof(ReadableVaccineNameValidTestCases))]
         public void ReadableVaccineNameInMappingReturnsCorrectlyMappedString(string s, string expected)
@@ -187,7 +179,7 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
             var actual = _certificateMappingService.GetReadableVaccineName(s);
             Assert.AreEqual(expected, actual);
         }
-        
+
         [TestCaseSource(nameof(UnmappedTestCases))]
         public void ReadableVaccineNameNotInMappingReturnsSameString(string s)
         {
@@ -195,7 +187,7 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
             Assert.AreEqual(s, actual);
         }
         #endregion
-        
+
         #region TestTypeTests
         [TestCaseSource(nameof(TestTypeValidTestCases))]
         public void TestTypeInMappingReturnsCorrectlyMappedString(string s, string expected)
@@ -203,7 +195,7 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
             var actual = _certificateMappingService.GetTestType(s);
             Assert.AreEqual(expected, actual);
         }
-        
+
         [TestCaseSource(nameof(UnmappedTestCases))]
         public void TestTypeNotInMappingReturnsSameString(string s)
         {
@@ -211,7 +203,7 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
             Assert.AreEqual(s, actual);
         }
         #endregion
-        
+
         #region TestResultsTests
         [TestCaseSource(nameof(TestResultValidTestCases))]
         public void TestResultInMappingReturnsCorrectlyMappedString(string s, string expected)
@@ -219,31 +211,13 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
             var actual = _certificateMappingService.GetTestResult(s);
             Assert.AreEqual(expected, actual);
         }
-        
+
         [TestCaseSource(nameof(UnmappedTestCases))]
         public void TestResultNotInMappingReturnsSameString(string s)
         {
             var actual = _certificateMappingService.GetTestResult(s);
             Assert.AreEqual(s, actual);
         }
-        #endregion
-
-        #region TestManufacturersTests
-
-        [TestCaseSource(nameof(TestManufacturerValidTestCases))]
-        public void TestManufacturersReturnsCorrectlyMappedString(string s, string expected)
-        {
-            var actual = _certificateMappingService.GetTestManufacturer(s);
-            Assert.AreEqual(expected, actual);
-        }
-
-        [TestCaseSource(nameof(UnmappedTestCases))]
-        public void TestManufacturersNotInMappingReturnsSameString(string s)
-        {
-            var actual = _certificateMappingService.GetTestManufacturer(s);
-            Assert.AreEqual(s, actual);
-        }
-
         #endregion
     }
 }

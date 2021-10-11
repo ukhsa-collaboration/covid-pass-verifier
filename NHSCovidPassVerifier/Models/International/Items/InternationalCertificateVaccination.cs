@@ -39,7 +39,5 @@ namespace NHSCovidPassVerifier.Models.International.Items
         [JsonProperty("ci")]
         public string CertificateId { get; set; }
 
-        [JsonProperty("lot")]
-        public string BatchNumber { get; set; }
     }
 }

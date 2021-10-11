@@ -12,6 +12,7 @@ using NHSCovidPassVerifier.Tests.TestData;
 using NHSCovidPassVerifier.Tests.MockServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Mocks;
+using NHSCovidPassVerifier.Services.Mocks;
 
 namespace NHSCovidPassVerifier.Tests.ViewModelTests
 {
@@ -37,7 +38,6 @@ namespace NHSCovidPassVerifier.Tests.ViewModelTests
         {
             Assert.AreEqual("INTERNATIONAL_SCANNER_RESULT_TITLE".Translate(), _viewModel.TitleText);
             Assert.AreEqual("INTERNATIONAL_SCANNER_RESULT_VACCINE_PRODUCT_TEXT".Translate(), _viewModel.VaccineProductText);
-            Assert.AreEqual("INTERNATIONAL_SCANNER_RESULT_BATCH_NUMBER_TEXT".Translate(),_viewModel.BatchNumberText);
             Assert.AreEqual("INTERNATIONAL_SCANNER_RESULT_CERTIFICATE_ID_TEXT".Translate(), _viewModel.CertificateIdText);
             Assert.AreEqual("INTERNATIONAL_SCANNER_RESULT_DISEASE_TARGETED_TEXT".Translate(), _viewModel.DiseaseTargetedText);
             Assert.AreEqual("INTERNATIONAL_SCANNER_RESULT_VACCINE_TEXT".Translate(), _viewModel.VaccineText);

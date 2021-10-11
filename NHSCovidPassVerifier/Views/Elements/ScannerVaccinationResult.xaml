@@ -54,7 +54,7 @@
 								HeightRequest="30">
                             <Image.Triggers>
                                 <DataTrigger TargetType="Image"
-                                             Binding="{Binding Source={RelativeSource AncestorType={x:Type views:Expander}}, 
+                                             Binding="{Binding Source={RelativeSource AncestorType={x:Type views:Expander}},
                                              Path=IsExpanded}"
                                              Value="True">
                                     <Setter Property="Source"
@@ -73,7 +73,7 @@
 							   AutomationProperties.IsInAccessibleTree="True"/>
 
                         <ImageButton
-                                 Grid.Row="0" 
+                                 Grid.Row="0"
                                  Grid.Column="1"
                                  HeightRequest="32"
                                  BackgroundColor="Transparent"
@@ -83,19 +83,19 @@
                                  VerticalOptions="Center"
                                  Padding="5,0,10,0"/>
 
-                        <Label Grid.Row="1" 
+                        <Label Grid.Row="1"
                                Text="{Binding DoseText}"
 							   FontSize="Body"
 							   TextColor="{StaticResource NhsTextColour}"
 							   VerticalOptions="Center"
 							   AutomationProperties.IsInAccessibleTree="True">
                             <Label.Triggers>
-                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type views:Expander}}, 
+                                <DataTrigger TargetType="Label" Binding="{Binding Source={RelativeSource AncestorType={x:Type views:Expander}},
                                              Path=IsExpanded}" Value="True">
-                                        <Setter Property="IsVisible" Value="False" />
-                                    </DataTrigger>
-                                </Label.Triggers> 
-                         </Label>
+                                    <Setter Property="IsVisible" Value="False" />
+                                </DataTrigger>
+                            </Label.Triggers>
+                        </Label>
 
                         <Grid Grid.Row="2" BackgroundColor="{StaticResource NhsDarkGray}"/>
 
@@ -113,58 +113,53 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <elements:ScannerResultEntry Grid.Row="0" Grid.ColumnSpan="2"
-                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=DoseLabelText}" 
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=DoseLabelText}"
                                                      ContentText="{Binding DoseNumber}"
                                                      IsVisible="{Binding DoseNumber, Converter={StaticResource NullToVisibilityConverter}}"/>
-                        
-                        <elements:ScannerResultEntry Grid.Row="1" Grid.ColumnSpan="2"
-                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=VaccineProductText}" 
-                                                     ContentText="{Binding VaccineProduct}"
-                                                     IsVisible="{Binding VaccineProduct, Converter={StaticResource NullToVisibilityConverter}}"/>
 
-                        <elements:ScannerResultEntry Grid.Row="2" Grid.ColumnSpan="2"
-                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=ManufacturerText}" 
+                        <elements:ScannerResultEntry Grid.Row="1" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=ManufacturerText}"
                                                      ContentText="{Binding Manufacturer}"
                                                      IsVisible="{Binding Manufacturer, Converter={StaticResource NullToVisibilityConverter}}"/>
 
-                        <elements:ScannerResultEntry Grid.Row="3" Grid.ColumnSpan="2"
-                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=VaccineText}" 
-                                                     ContentText="{Binding Vaccine}"
-                                                     IsVisible="{Binding Vaccine, Converter={StaticResource NullToVisibilityConverter}}"/>
-
-                        <elements:ScannerResultEntry Grid.Row="4" Grid.ColumnSpan="2"
-                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=BatchNumberText}" 
-                                                     ContentText="{Binding BatchNumber}"
-                                                     IsVisible="{Binding BatchNumber, Converter={StaticResource NullToVisibilityConverter}}"/>
-
-                        <elements:ScannerResultEntry Grid.Row="5" Grid.ColumnSpan="2"
-                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=DiseaseTargetedText}" 
+                        <elements:ScannerResultEntry Grid.Row="2" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=DiseaseTargetedText}"
                                                      ContentText="{Binding DiseaseTargeted}"
                                                      IsVisible="{Binding DiseaseTargeted, Converter={StaticResource NullToVisibilityConverter}}"/>
 
-                        <elements:ScannerResultEntry Grid.Row="6" Grid.ColumnSpan="2"
-                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=CountryVaccinatedText}" 
+                        <elements:ScannerResultEntry Grid.Row="3" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=VaccineText}"
+                                                     ContentText="{Binding Vaccine}"
+                                                     IsVisible="{Binding Vaccine, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+
+                        <elements:ScannerResultEntry Grid.Row="4" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=VaccineProductText}"
+                                                     ContentText="{Binding VaccineProduct}"
+                                                     IsVisible="{Binding VaccineProduct, Converter={StaticResource NullToVisibilityConverter}}"/>
+
+                        <elements:ScannerResultEntry Grid.Row="5" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=CountryVaccinatedText}"
                                                      ContentText="{Binding CountryOfVaccination}"
                                                      IsVisible="{Binding CountryOfVaccination, Converter={StaticResource NullToVisibilityConverter}}"/>
-                        
-                        <elements:ScannerResultEntry Grid.Row="7" Grid.ColumnSpan="2"
-                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=CertificateIssuerText}" 
+
+                        <elements:ScannerResultEntry Grid.Row="6" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=CertificateIssuerText}"
                                                      ContentText="{Binding CertificateIssuer}"
                                                      IsVisible="{Binding CertificateIssuer, Converter={StaticResource NullToVisibilityConverter}}"/>
-                        
-                        <elements:ScannerResultEntry Grid.Row="8" Grid.ColumnSpan="2"
-                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=CertificateIdText}" 
+
+                        <elements:ScannerResultEntry Grid.Row="7" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=CertificateIdText}"
                                                      ContentText="{Binding CertificateId}"
                                                      IsVisible="{Binding CertificateId, Converter={StaticResource NullToVisibilityConverter}}"/>
 
-                        <elements:ScannerResultEntry Grid.Row="9" Grid.ColumnSpan="2"
-                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=ProductCodeText}" 
+                        <elements:ScannerResultEntry Grid.Row="8" Grid.ColumnSpan="2"
+                                                     HeaderText="{Binding Source={RelativeSource AncestorType={x:Type viewModels:ScannerResultInternationalCodeViewModel}}, Path=ProductCodeText}"
                                                      ContentText="{Binding ProductCode}"
                                                      IsVisible="{Binding ProductCode, Converter={StaticResource NullToVisibilityConverter}}"
                                                      WithEndLine="False"/>
@@ -173,13 +168,13 @@
                 </views:Expander.Content>
 
             </views:Expander>
-            <BoxView Grid.Row="2" 
-					 VerticalOptions="Start" 
+            <BoxView Grid.Row="2"
+					 VerticalOptions="Start"
 					 HeightRequest="1"
 					 Opacity="0.1"
 					 BackgroundColor="Black" />
 
-            <Label  Grid.Row="2" 
+            <Label  Grid.Row="2"
 					Padding="20,10,10,10"
 						Text="{Binding DateOfVaccinationText}"
 						FontSize="Body"

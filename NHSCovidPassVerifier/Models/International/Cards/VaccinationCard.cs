@@ -16,7 +16,6 @@ namespace NHSCovidPassVerifier.Models.International.Cards
         public string DoseText { get; }
         public string DoseNumber { get; }
         public string VaccineProduct { get; }
-        public string BatchNumber { get; }
         public string CertificateId { get; }
         public string DiseaseTargeted { get; }
         public string Vaccine { get; }
@@ -37,13 +36,12 @@ namespace NHSCovidPassVerifier.Models.International.Cards
                 $"{"INTERNATIONAL_SCANNER_RESULT_DOSE_TEXT".Translate()} {v.DoseNumber} {"INTERNATIONAL_SCANNER_RESULT_OF_TEXT".Translate()} {v.TotalNumberOfDose}";
             DoseNumber = v.DoseNumber.ToString().SetDashIfNoValue();
             VaccineProduct = certificateMappingService.GetVaccineName(v.ProductCode).SetDashIfNoValue();
-            BatchNumber = v.BatchNumber.SetDashIfNoValue();
             CertificateId = v.CertificateId.SetDashIfNoValue();
             ProductCode = v.ProductCode.SetDashIfNoValue();
             DiseaseTargeted = certificateMappingService.GetDiseaseTargeted(v.DiseaseTargeted).SetDashIfNoValue();
             Vaccine = certificateMappingService.GetVaccineType(v.VaccineTypeCode).SetDashIfNoValue();
             CountryOfVaccination = v.Country.SetDashIfNoValue();
-            Manufacturer = certificateMappingService.GetTestManufacturer(v.Manufacturer).SetDashIfNoValue();
+            Manufacturer = certificateMappingService.GetManufacturer(v.Manufacturer).SetDashIfNoValue();
             CertificateIssuer = v.CertificateIssuer.SetDashIfNoValue();
             DateOfVaccinationText = "INTERNATIONAL_SCANNER_RESULT_DATE_OF_VACCINATION".Translate(
                 _dateOfVaccination.HasValue
@@ -80,7 +78,6 @@ namespace NHSCovidPassVerifier.Models.International.Cards
                    && DoseText == other.DoseText
                    && DoseNumber == other.DoseNumber
                    && VaccineProduct == other.VaccineProduct
-                   && BatchNumber == other.BatchNumber
                    && CertificateId == other.CertificateId
                    && DiseaseTargeted == other.DiseaseTargeted
                    && Vaccine == other.Vaccine
@@ -107,7 +104,6 @@ namespace NHSCovidPassVerifier.Models.International.Cards
                 hashCode = (hashCode * 397) ^ (DoseText != null ? DoseText.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (DoseNumber != null ? DoseNumber.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (VaccineProduct != null ? VaccineProduct.GetHashCode() : 0);
-                hashCode = (hashCode * 397) ^ (BatchNumber != null ? BatchNumber.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (CertificateId != null ? CertificateId.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (DiseaseTargeted != null ? DiseaseTargeted.GetHashCode() : 0);
                 hashCode = (hashCode * 397) ^ (Vaccine != null ? Vaccine.GetHashCode() : 0);

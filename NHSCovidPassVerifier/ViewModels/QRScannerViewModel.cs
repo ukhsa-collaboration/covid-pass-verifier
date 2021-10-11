@@ -28,6 +28,7 @@ namespace NHSCovidPassVerifier.ViewModels
         private readonly ILoggingService _loggingService;
         private readonly IJwkService _jwkService;
         private readonly IInternationalEnabledService _internationalEnabledService;
+        private readonly ICommonSettingsService _commonsettingsService;
 
         private ICertificate _certificate;
 
@@ -37,35 +38,37 @@ namespace NHSCovidPassVerifier.ViewModels
         public string ToggleInternationalText { get; set; }
         public string Toggle2DBarcodeText { get; set; }
 
-
         public override ICommand BackCommand => new AsyncCommand(async () => await ExecuteOnceAsync(GoBackAndDestroyScanner), errorHandler: _appErrorHandler);
         public override ICommand AboutCommand => new AsyncCommand(async () => await ExecuteOnceAsync(GoToAboutPageDestroyScanner), errorHandler: _appErrorHandler);
 
         private static readonly int DelayBetweenContinousScans = 200;
         private static readonly int DelayBetweenAnalyzingFrames = 200;
         private static int MinResolutionHeightThreshold = 720;
-        
+
         public MobileBarcodeScanningOptions ScanningOptions => new MobileBarcodeScanningOptions
         {
             DelayBetweenContinuousScans = DelayBetweenContinousScans,
             DelayBetweenAnalyzingFrames = DelayBetweenAnalyzingFrames,
-            PossibleFormats = new List<BarcodeFormat> {BarcodeFormat.QR_CODE},
+            PossibleFormats = new List<BarcodeFormat> { BarcodeFormat.QR_CODE },
             CameraResolutionSelector = SelectLowestResolution,
             TryInverted = true,
             TryHarder = true,
             InitialDelayBeforeAnalyzingFrames = 0
         };
-        
-        public QRScannerViewModel(IQrDecoderService qrDecoderService, 
-            ILoggingService loggingService, 
+
+        public QRScannerViewModel(IQrDecoderService qrDecoderService,
+            ILoggingService loggingService,
             IJwkService jwkService,
-            IInternationalEnabledService internationalEnabledService)
+            IInternationalEnabledService internationalEnabledService,
+            ICommonSettingsService commonsettingsService)
         {
             _qrDecoderService = qrDecoderService;
             _loggingService = loggingService;
             _jwkService = jwkService;
             _internationalEnabledService = internationalEnabledService;
-            
+            _commonsettingsService = commonsettingsService;
+
+
             InitText();
         }
 
@@ -78,7 +81,7 @@ namespace NHSCovidPassVerifier.ViewModels
             ToggleInternationalText = "DROP_DOWN_MENU_TOGGLE_INTERNATIONAL".Translate();
             Toggle2DBarcodeText = "DROP_DOWN_MENU_TOGGLE_2D_BARCODE".Translate();
         }
-        
+
         /// <summary>
         /// Prevents camera preview distortion. Selects the lowest resolution within the tolerance of device aspect ratio.
         /// Lowest resolution is selected as the lower the resolution, the faster QR detection should be.
@@ -102,7 +105,7 @@ namespace NHSCovidPassVerifier.ViewModels
             var minDiff = double.MaxValue;
 
             availableResolutions
-                .Where(r => Math.Abs(((double) r.Width / r.Height) - targetRatio) < aspectTolerance)
+                .Where(r => Math.Abs(((double)r.Width / r.Height) - targetRatio) < aspectTolerance)
                 .ForEach(
                     res =>
                     {
@@ -136,7 +139,7 @@ namespace NHSCovidPassVerifier.ViewModels
             _loggingService.LogMessage(Models.Logging.LogSeverity.INFO, QrCodeScannerStates.InvalidScan.ToDescriptionString());
 
             await PushPage(new ScannerResultPage(), false, false);
-            
+
         }
 
         private async Task OnScanSuccess()
@@ -144,6 +147,8 @@ namespace NHSCovidPassVerifier.ViewModels
             _certificate = _qrDecoderService.GenerateCertificateFromQrCode();
             var certificateType = _certificate.GetCertificateType();
             var internationalEnabled = _internationalEnabledService.GetInternationalEnabled();
+            var isEnglandVaccination = false;
+            var isCorrectNumberOfDoses = false;
 
             switch (_certificate)
             {
@@ -163,8 +168,16 @@ namespace NHSCovidPassVerifier.ViewModels
                             ? QrCodeScannerStates.ValidInternationalCertificate.ToDescriptionString()
                             : QrCodeScannerStates.DisabledInternationalCertificate.ToDescriptionString(),
                         customProperties);
+                    var certificateVaccination = internationalCertificate.DecodedModel.hcert.euHcertV1Schema.Vaccinations?.FirstOrDefault();
+                    if (certificateVaccination != null)
+                    {
+                        isEnglandVaccination = _commonsettingsService.EnglishCertificateIssuers.Contains(certificateVaccination.CertificateIssuer);
+                        isCorrectNumberOfDoses = _commonsettingsService.InternationalMinimumDoses.TryGetValue(certificateVaccination.ProductCode, out var minimumDoses)
+                                                 && certificateVaccination.DoseNumber >= minimumDoses;
+                    }
                     break;
             }
+
 
             if (certificateType == CertificateType.Domestic)
             {
@@ -173,6 +186,10 @@ namespace NHSCovidPassVerifier.ViewModels
             else if (internationalEnabled)
             {
                 await PushPage(new ScannerResultInternationalCodePage(), false, true);
+            }
+            else if (!internationalEnabled && certificateType == CertificateType.International && !isEnglandVaccination && isCorrectNumberOfDoses)
+            {
+                await PushPage(new ScannerResultPage(), false, true);
             }
             else
             {

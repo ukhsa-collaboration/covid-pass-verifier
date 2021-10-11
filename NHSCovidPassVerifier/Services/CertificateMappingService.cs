@@ -27,10 +27,10 @@ namespace NHSCovidPassVerifier.Services
             _readableVaccineNames = _commonSettingsService.ReadableVaccineNames;
             _testTypes = _commonSettingsService.TestTypes;
             _testResults = _commonSettingsService.TestResults;
-            _testManufacturers = _commonSettingsService.TestManufacturers;
+            
         }
         
-        public string GetVaccineManufacturer(string key)
+        public string GetManufacturer(string key)
         {
             return _vaccineManufacturers.TryGetValue(key ?? string.Empty, out var value) ? value : key;
         }

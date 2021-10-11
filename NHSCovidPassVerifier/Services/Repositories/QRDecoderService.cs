@@ -20,7 +20,7 @@ namespace NHSCovidPassVerifier.Services.Repositories
     {
         private ICertificate _decodedCertificate;
         private ICertificatePayload _certificatePayload;
-        
+
         private readonly IQrValidatorService _qrValidatorService;
         private readonly ILoggingService _loggingService;
         private readonly IBase45Service _base45Service;
@@ -29,14 +29,14 @@ namespace NHSCovidPassVerifier.Services.Repositories
         private readonly IDictionary<CertificateType, Func<string, Task<bool>>> _validateQrCodeMap;
         private readonly IDictionary<CertificateType, Func<ICertificate>> _generateCertificateMap;
 
-        public QrDecoderService(IQrValidatorService qrValidatorService, ILoggingService loggingService, 
+        public QrDecoderService(IQrValidatorService qrValidatorService, ILoggingService loggingService,
             IBase45Service base45Service, IZLibService zLibService)
         {
             _qrValidatorService = qrValidatorService;
             _loggingService = loggingService;
             _base45Service = base45Service;
             _zLibService = zLibService;
-            
+
             _validateQrCodeMap = new Dictionary<CertificateType, Func<string, Task<bool>>>
             {
                 [CertificateType.Domestic] = ValidateQrCodeForDomesticCertificate,
@@ -53,8 +53,8 @@ namespace NHSCovidPassVerifier.Services.Repositories
         public Task<bool> ValidateQrCode(string qrCode)
         {
             _certificatePayload = default;
-            var resultType = CertificateTypeExtension.GetCertificateType(qrCode.Substring(0, 3));
-            
+            var resultType = !String.IsNullOrEmpty(qrCode) && qrCode.Length >= 3 ? CertificateTypeExtension.GetCertificateType(qrCode.Substring(0, 3)) : CertificateType.Domestic;
+
             return _validateQrCodeMap[resultType].Invoke(qrCode);
         }
 
@@ -104,10 +104,10 @@ namespace NHSCovidPassVerifier.Services.Repositories
         {
             try
             {
-                if (_certificatePayload == null || string.IsNullOrEmpty(((DomesticCertificatePayload) _certificatePayload).PayloadContent))
+                if (_certificatePayload == null || string.IsNullOrEmpty(((DomesticCertificatePayload)_certificatePayload).PayloadContent))
                     return default;
 
-                var input = ((DomesticCertificatePayload) _certificatePayload).PayloadContent.Substring(1);
+                var input = ((DomesticCertificatePayload)_certificatePayload).PayloadContent.Substring(1);
 
                 var numMatch = Regex.Match(input, "[0-9]", RegexOptions.IgnoreCase);
 
@@ -187,7 +187,7 @@ namespace NHSCovidPassVerifier.Services.Repositories
                     return default;
                 }
 
-                internationalCertificate.DecodedModel = (InternationalCertificatePayload) _certificatePayload;
+                internationalCertificate.DecodedModel = (InternationalCertificatePayload)_certificatePayload;
                 _decodedCertificate = internationalCertificate;
                 return internationalCertificate;
             }
@@ -203,7 +203,7 @@ namespace NHSCovidPassVerifier.Services.Repositories
             var compressedBytesFromBase45Token = _base45Service.Base45Decode(base45String);
             var decompressedSignedCoseBytes = _zLibService.DecompressData(compressedBytesFromBase45Token);
             var cborMessageFromCose = CoseSign1Object.Decode(decompressedSignedCoseBytes);
-            
+
             return cborMessageFromCose;
         }
     }

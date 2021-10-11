@@ -8,6 +8,7 @@ using NHSCovidPassVerifier.Utils;
 using I18NPortable;
 using Moq;
 using NUnit.Framework;
+using NHSCovidPassVerifier.Services.Mocks;
 
 namespace NHSCovidPassVerifier.Tests.ViewModelTests
 {

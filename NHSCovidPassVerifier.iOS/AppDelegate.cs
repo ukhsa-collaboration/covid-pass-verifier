@@ -24,6 +24,7 @@ namespace NHSCovidPassVerifier.iOS
 
             ZXing.Net.Mobile.Forms.iOS.Platform.Init();
 
+            PreventLinkerFromStrippingCommonLocalizationReferences();
             RegisterClientHandler();
             RegisterIosServices();
 
@@ -65,6 +66,14 @@ namespace NHSCovidPassVerifier.iOS
         {
             base.WillTerminate(uiApplication);
             DeviceDisplay.MainDisplayInfoChanged -= HandleOrientationChanges;
+        }
+
+        private static void PreventLinkerFromStrippingCommonLocalizationReferences()
+        {
+            _ = new System.Globalization.GregorianCalendar();
+            _ = new System.Globalization.PersianCalendar();
+            _ = new System.Globalization.UmAlQuraCalendar();
+            _ = new System.Globalization.ThaiBuddhistCalendar();
         }
 
     }
