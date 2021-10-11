@@ -1,13 +1,14 @@
 ﻿using NHSCovidPassVerifier.Enums;
 using NHSCovidPassVerifier.Models;
+using NHSCovidPassVerifier.Models.International;
 using NHSCovidPassVerifier.Services.Interfaces;
 using NHSCovidPassVerifier.Utils;
 using NHSCovidPassVerifier.ViewModels.Base;
 using I18NPortable;
+using System;
 using System.Threading.Tasks;
 using System.Timers;
 using Xamarin.Forms;
-
 namespace NHSCovidPassVerifier.ViewModels
 {
     public class ScannerResultViewModel : BaseViewModel
@@ -53,12 +54,12 @@ namespace NHSCovidPassVerifier.ViewModels
             _timer.Elapsed += OnTimedEvent;
             _timer.Interval = timerIntervalMs;
             _timer.Enabled = true;
-            
+
             InitText();
 
         }
 
-        public void SetCertificate(DomesticCertificate certificate)
+        public void SetDomesticCertificate(DomesticCertificate certificate)
         {
             ValidHelpText = "VALID_HELP_TEXT".Translate();
             CovidStatus = "NHS_COVID_STATUS".Translate();
@@ -79,6 +80,29 @@ namespace NHSCovidPassVerifier.ViewModels
             RaisePropertyChanged(() => ExpiresDate);
             RaisePropertyChanged(() => ExpiresTime);
             RaisePropertyChanged(() => ExpiredPassport);
+            RaisePropertyChanged(() => ValidPassport);
+        }
+
+        public void SetInternationalCertificate(InternationalCertificate certificate)
+        {
+            ValidHelpText = "VALID_HELP_TEXT".Translate();
+            CovidStatus = "NHS_COVID_STATUS".Translate();
+            ExpiredText = "EXPIRED_TEXT".Translate();
+
+            var subject = certificate.DecodedModel.hcert.euHcertV1Schema.InternationalCertificateSubject;
+            Name = subject.GivenName + " " + subject.FamilyName;
+
+            var certificateExpirationDate = certificate.DecodedModel.exp.ConvertEpochToDate();
+
+            ExpiresDate = certificateExpirationDate?.ToLocalTime().FormatDate();
+            ValidStatusText = "Valid";
+            ValidPassport = true;
+            RaisePropertyChanged(() => ValidHelpText);
+            RaisePropertyChanged(() => CovidStatus);
+            RaisePropertyChanged(() => ExpiredText);
+            RaisePropertyChanged(() => ExpiresDate);
+            RaisePropertyChanged(() => Name);
+            RaisePropertyChanged(() => ValidStatusText);
             RaisePropertyChanged(() => ValidPassport);
         }
 
@@ -103,7 +127,7 @@ namespace NHSCovidPassVerifier.ViewModels
                 Device.BeginInvokeOnMainThread(async () => await _navigationService.PopPage());
 
             }
-            TimerProgress -= (double) timerIntervalMs / timerDurationMs;
+            TimerProgress -= (double)timerIntervalMs / timerDurationMs;
         }
 
         public void PauseTimer()
@@ -120,11 +144,24 @@ namespace NHSCovidPassVerifier.ViewModels
         {
             ScanSuccess = (bool)navigationData;
             if (ScanSuccess)
-                SetCertificate((DomesticCertificate)_qrDecoderService.GetDecodedCertificate());
+            {
+                var certificate = _qrDecoderService.GetDecodedCertificate();
+                if (certificate.GetCertificateType() == CertificateType.Domestic)
+                {
+                    SetDomesticCertificate((DomesticCertificate)certificate);
+                }
+                else
+                {
+                    SetInternationalCertificate((InternationalCertificate)certificate);
+                }
+
+            }
             else
                 SetInvalidText();
-            
+
             return base.InitializeAsync(navigationData);
         }
+
+
     }
 }

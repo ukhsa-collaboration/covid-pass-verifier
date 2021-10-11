@@ -55,7 +55,8 @@ namespace NHSCovidPassVerifier.Droid
             AndroidEnvironment.UnhandledExceptionRaiser += OnUnhandledAndroidException;
 
             Forms.Init(this, savedInstanceState);
-            
+
+            PreventLinkerFromStrippingCommonLocalizationReferences();
             RegisterClientHandler();
             RegisterAndroidServices();
 
@@ -128,6 +129,13 @@ namespace NHSCovidPassVerifier.Droid
             {
                 navService.PopPage();
             }
+        }
+        private static void PreventLinkerFromStrippingCommonLocalizationReferences()
+        {
+            _ = new System.Globalization.GregorianCalendar();
+            _ = new System.Globalization.PersianCalendar();
+            _ = new System.Globalization.UmAlQuraCalendar();
+            _ = new System.Globalization.ThaiBuddhistCalendar();
         }
     }
 }

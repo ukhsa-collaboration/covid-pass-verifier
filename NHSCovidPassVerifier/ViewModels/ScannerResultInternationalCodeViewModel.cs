@@ -32,7 +32,6 @@ namespace NHSCovidPassVerifier.ViewModels
 
         // Vaccination Card text
         public string VaccineProductText { get; set; }
-        public string BatchNumberText { get; set; }
         public string VaccineText { get; set; }
         public string CountryVaccinatedText { get; set; }
         public string ProductCodeText { get; set; }
@@ -86,7 +85,6 @@ namespace NHSCovidPassVerifier.ViewModels
             CountryOfTestText = "INTERNATIONAL_SCANNER_RESULT_COUNTRY_OF_TEST".Translate();
 
             VaccineProductText = "INTERNATIONAL_SCANNER_RESULT_VACCINE_PRODUCT_TEXT".Translate();
-            BatchNumberText = "INTERNATIONAL_SCANNER_RESULT_BATCH_NUMBER_TEXT".Translate();
             VaccineText = "INTERNATIONAL_SCANNER_RESULT_VACCINE_TEXT".Translate();
             CountryVaccinatedText = "INTERNATIONAL_SCANNER_RESULT_COUNTRY_OF_VACCINATION_TEXT".Translate();
             ManufacturerText = "INTERNATIONAL_SCANNER_RESULT_MANUFACTURER_TEXT".Translate();

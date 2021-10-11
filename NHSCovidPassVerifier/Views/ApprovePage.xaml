@@ -27,31 +27,37 @@
                   />
 
             <ScrollView Grid.Row="2" Padding="0,0,0,20" >
-                <StackLayout Grid.Row="2" Margin="30,20,30,10" Spacing="20" VerticalOptions="Center">
-
-                    <Label Text="{Binding ApprovePageTitle}"
+                <Grid Grid.Row="2" Margin="30,20,30,10" VerticalOptions="Center">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label
+                       Grid.Row="0"
+                       Text="{Binding ApprovePageTitle}"
                        TextColor="{StaticResource NhsTextColour}"
-                       FontSize="28"
+                       FontSize="Title"
                        FontAttributes="Bold"            
                        HorizontalOptions="Center"
                        HorizontalTextAlignment="Center"
                        VerticalOptions="End"
                        />
-                    <Label HorizontalOptions="Center"
+                    <Label Grid.Row="1"
+                           HorizontalOptions="Center"
                            HorizontalTextAlignment="Center"
                            VerticalOptions="End"
-                           Padding="20, 0">
+                           >
                         <Label.FormattedText>
-                            <FormattedString>
+                            <FormattedString >
                                 <Span Text="{Binding ApproveToCText}"
                                       TextColor="{StaticResource NhsTextColour}"
                                       FontSize="Body"/>
                                 <Span Text=" " />
-                                <local:HyperlinkSpan Text="{Binding ToCLinkText}" FontSize="Body">
-                                    <local:HyperlinkSpan.GestureRecognizers>
+                                <Span Text="{Binding ToCLinkText}" FontSize="Body" TextColor="{StaticResource NhsBlue}" TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
                                         <TapGestureRecognizer Command="{Binding TermsAndConditionsCommand}" />
-                                    </local:HyperlinkSpan.GestureRecognizers>
-                                </local:HyperlinkSpan>
+                                    </Span.GestureRecognizers>
+                                </Span>
                                 <Span Text=" " />
                                 <Span Text="{Binding ApproveToCText_2}"
                                       TextColor="{StaticResource NhsTextColour}"
@@ -59,7 +65,7 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                </StackLayout>
+                </Grid>
             </ScrollView>
 
             <Frame  Grid.Row="3"

@@ -38,7 +38,7 @@ namespace NHSCovidPassVerifier.Services.Repositories
                 var ecKey = (await GetKeyVaultKey(header)).FirstOrDefault();
                 if (ecKey == default)
                 {
-                    throw new Exception("EC Key not found");
+                    return false;
                 }
 
                 var key = PublicKeyFactory.CreateKey(Convert.FromBase64String(ecKey.PublicKey));

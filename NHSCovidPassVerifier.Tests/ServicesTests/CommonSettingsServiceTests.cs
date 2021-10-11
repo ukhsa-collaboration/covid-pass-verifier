@@ -21,21 +21,18 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
 
         private static readonly IDictionary<string, string> ExpectedVaccineDiseasesTargeted =
             CertificateMappingData.GetDiseasesTargeted();
-        
+
         private static readonly IDictionary<string, string> ExpectedVaccineNames =
             CertificateMappingData.GetVaccineNames();
 
         private static readonly IDictionary<string, string> ExpectedReadableVaccineNames =
             CertificateMappingData.GetReadableVaccineNames();
-        
+
         private static readonly IDictionary<string, string> ExpectedTestTypes =
             CertificateMappingData.GetTestTypes();
-        
+
         private static readonly IDictionary<string, string> ExpectedTestResults =
             CertificateMappingData.GetTestResults();
-
-        private static readonly IDictionary<string, string> ExpectedTestManufacturers =
-            CertificateMappingData.GetTestManufacturers();
 
         public CommonSettingsServiceTests()
         {
@@ -77,7 +74,7 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
             var expected = ExpectedVaccineNames;
             Assert.IsTrue(AreEqual(expected, actual));
         }
-        
+
         [Test]
         public void ReadableVaccineNamesMappingIsAsExpected()
         {
@@ -100,15 +97,6 @@ namespace NHSCovidPassVerifier.Tests.ServicesTests
             var actual = _commonSettingsService.TestResults;
             var expected = ExpectedTestResults;
             Assert.IsTrue(AreEqual(expected, actual));
-        }
-
-        [Test]
-        public void TestManufacturersMappingIsAsExpected()
-        {
-            var actual = _commonSettingsService.TestManufacturers;
-            var expected = ExpectedTestManufacturers;
-            
-            Assert.True( expected.Values.All(x => actual.Values.Contains(x)) );
         }
     }
 }

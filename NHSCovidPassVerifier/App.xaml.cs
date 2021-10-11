@@ -47,6 +47,7 @@ namespace NHSCovidPassVerifier
             }
             _navigationService.OpenLandingPage();
 
+            RefreshConfiguration();
             base.OnStart();
         }
 
@@ -66,6 +67,12 @@ namespace NHSCovidPassVerifier
         private async Task UpdateScannerEcKeys()
         {
            await IoCContainer.Resolve<IJwkService>().UpdateJwkList();
+        }
+
+        private void RefreshConfiguration()
+        {
+            IoCContainer.RegisterSingleton<ICommonSettingsService, CommonSettingsService>();
+            IoCContainer.RegisterSingleton<ISettingsService, SettingsService>();
         }
     }
 }

@@ -37,7 +37,6 @@ namespace NHSCovidPassVerifier.Tests.TestData
                 TotalNumberOfDose = 2,
                 DateOfVaccination = refDate.AddDays(-30),
                 Country = "England",
-                BatchNumber = "1",
                 CertificateIssuer = "Whipps Cross",
                 VaccineTypeCode = "AZ"    
             };

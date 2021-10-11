@@ -16,6 +16,7 @@ namespace NHSCovidPassVerifier.Tests.ViewModelTests
         private readonly ILoggingService _loggingService;
         private readonly IJwkService _jwkService;
         private readonly IInternationalEnabledService _internationalEnabledService;
+        private readonly ICommonSettingsService _commonSettingsService;
 
         public QrScannerViewModelTests()
         {
@@ -23,8 +24,9 @@ namespace NHSCovidPassVerifier.Tests.ViewModelTests
             _loggingService = new Mock<ILoggingService>().Object;
             _jwkService = new Mock<IJwkService>().Object;
             _internationalEnabledService = new Mock<IInternationalEnabledService>().Object;
+            _commonSettingsService = new Mock<ICommonSettingsService>().Object;
 
-            _viewModel = new QRScannerViewModel(_qrDecoderService, _loggingService, _jwkService, _internationalEnabledService);
+            _viewModel = new QRScannerViewModel(_qrDecoderService, _loggingService, _jwkService, _internationalEnabledService, _commonSettingsService);
         }
 
         [Test]

@@ -11,7 +11,7 @@ namespace NHSCovidPassVerifier.Services
         private readonly JObject _commonSettings;
 
         public CommonSettingsService() { }
-        
+
         public CommonSettingsService(IConfigurationProvider configurationProvider)
         {
             using var reader = new StreamReader(configurationProvider.GetCommonConfiguration());
@@ -20,7 +20,7 @@ namespace NHSCovidPassVerifier.Services
 
             _commonSettings = JObject.Parse(json);
         }
-        
+
         public IDictionary<string, string> VaccineManufacturers => GetDictionary<string, string>(nameof(VaccineManufacturers));
         public IDictionary<string, string> VaccineTypes => GetDictionary<string, string>(nameof(VaccineTypes));
         public IDictionary<string, string> DiseasesTargeted => GetDictionary<string, string>(nameof(DiseasesTargeted));
@@ -28,20 +28,31 @@ namespace NHSCovidPassVerifier.Services
         public IDictionary<string, string> ReadableVaccineNames => GetDictionary<string, string>(nameof(ReadableVaccineNames));
         public IDictionary<string, string> TestTypes => GetDictionary<string, string>(nameof(TestTypes));
         public IDictionary<string, string> TestResults => GetDictionary<string, string>(nameof(TestResults));
-
-        public IDictionary<string, string> TestManufacturers =>
-            GetDictionary<string, string>(nameof(TestManufacturers));
+        public IEnumerable<string> EnglishCertificateIssuers => GetArray<string>(nameof(EnglishCertificateIssuers));
+        public IDictionary<string, int> InternationalMinimumDoses => GetDictionary<string, int>(nameof(InternationalMinimumDoses));
 
         private IDictionary<TKey, TValue> GetDictionary<TKey, TValue>(string key)
         {
             var value = _commonSettings.SelectToken(key);
-            
+
             if (value == null)
             {
                 throw new InvalidOperationException($"Key '{key}' does not exist in common settings file.");
             }
-            
+
             return value.ToObject<IDictionary<TKey, TValue>>();
+        }
+
+        private IEnumerable<T> GetArray<T>(string key)
+        {
+            var value = _commonSettings.SelectToken(key);
+
+            if (value == null)
+            {
+                throw new InvalidOperationException($"Key '{key}' does not exist in current settings file.");
+            }
+
+            return value.Values<T>();
         }
     }
 }
