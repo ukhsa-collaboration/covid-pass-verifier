@@ -163,7 +163,7 @@ The NHS COVID Pass Verifier application reads QR codes which store personal data
 READ_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE permissions are used to securely store keys that are used to verify a 2D Barcode has been signed by a trusted authority. These permissions are not used to store any data related to the user or app usage. The storage used does not hold any personal data. 
 
 ### Camera Usage
-Upon clicking the ”Check a 2D barcode” button on the landing screen, the user is asked to give permission to the application to use the camera. If the user denies these permissions, a screen will appear specifying that the permissions are required to proceed to the camera. If the user grants these persmissions, the app will proceed.
+Upon clicking the ”Check a 2D barcode” button on the landing screen, the user is asked to give permission to the application to use the camera. If the user denies these permissions, a screen will appear specifying that the permissions are required to proceed to the camera. If the user grants these permissions, the app will proceed.
 
 ### Security
 We use appropriate technical, organisational and administrative security measures to protect any information we hold in our records from loss, misuse, unauthorised access, disclosure, alteration and destruction. We have written procedures and policies which are regularly audited and reviewed at a senior level. 
