@@ -251,17 +251,15 @@ We keep our Privacy Notice under regular review, and we will make new versions a
 
 8.4.	Each of the clauses in these Terms operates separately. If any part of these Terms is determined to be invalid or unenforceable then the remainder of these Terms will remain in full force and effect. 
 
-Last updated: **21st June 2021** 
+Last updated: **21st Oct 2022** 
 	
 	
 </details>	
 		
 
 ## For More Information
-For more information on the COVID Pass Verifier, including how we handle Data and Privacy, please visit: https://www.nhsx.nhs.uk/covid-19-response/covid-pass-verifier-app-support/
 
-
-If you have further questions about the NHS COVID Pass Verifier please email covid-status.feedback@nhs.net
+If you have further questions about the NHS COVID Pass Verifier please email covidcertstatuspmo@nhsx.nhs.uk
 
 ## COVID-19 advice and information
 	
