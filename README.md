@@ -259,7 +259,7 @@ Last updated: **21st Oct 2022**
 
 ## For More Information
 
-If you have further questions about the NHS COVID Pass Verifier please email covidcertstatuspmo@nhsx.nhs.uk
+If you have further questions about the NHS COVID Pass Verifier please email covidcertstatuspmo@nhsbsa.nhs.uk
 
 ## COVID-19 advice and information
 	
