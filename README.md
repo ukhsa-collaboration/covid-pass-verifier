@@ -239,7 +239,7 @@ We keep our Privacy Notice under regular review, and we will make new versions a
 	
 ### Security 
 	
-7.1.	If you discover a potential security vulnerability or suspect a security incident related to this Service, please report it to covid-status.security@nhs.net. 
+7.1.	If you discover a potential security vulnerability or suspect a security incident related to this Service, please report it to covidcertstatuspmo@nhsbsa.nhs.uk.
 	
 ### Miscellaneous
 	
