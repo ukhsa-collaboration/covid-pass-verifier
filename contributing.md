@@ -3,9 +3,9 @@
 #### Did you find a bug?
 If the bug is a security vulnerability issue, **Do not open up a github issue**, instead refer to the [COVID Pass vulnerability disclosure policy.](https://www.nhsx.nhs.uk/covid-19-response/covid-19-vaccination-status-vulnerability-disclosure-policy/)
 
-If you have found a bug, please ensure it hasn't been reported already under [Issues.](https://github.com/nhsx/covid-pass-verifier/issues)
+If you have found a bug, please ensure it hasn't been reported already under [Issues.](https://github.com/ukhsa-collaboration/covid-pass-verifier/issues)
 
-If you're unable to find an open issue addressing the problem, [open a new one.](https://github.com/nhsx/covid-pass-verifier/issues/new) Be sure to include a **title and clear description**, as much relevant information as possible, and a code sample or an executable test case demonstrating the expected behavior that is not occurring.
+If you're unable to find an open issue addressing the problem, [open a new one.](https://github.com/ukhsa-collaboration/covid-pass-verifier/issues/new) Be sure to include a **title and clear description**, as much relevant information as possible, and a code sample or an executable test case demonstrating the expected behavior that is not occurring.
 
 #### Contributing
 This is the process for submitting proposed changes to the NHS COVID Pass Verifier repository:
